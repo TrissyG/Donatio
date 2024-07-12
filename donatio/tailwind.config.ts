@@ -7,18 +7,22 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    colors: {
-      "donatio-white": "#FAFAFA",
-      "donatio-cream": "#F8FAEC",
-      "donatio-green": "#50A45A",
-      "donatio-red": "#EA4141",
-      "donatio-black": "#232323",
-    },
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      },
+      fontFamily: {
+        inter: ["Inter", "sans-serif"],
+        montserrat: ["Montserrat", "sans-serif"],
+      },
+      colors: {
+        "donatio-white": "#FAFAFA",
+        "donatio-cream": "#F8FAEC",
+        "donatio-green": "#50A45A",
+        "donatio-red": "#EA4141",
+        "donatio-black": "#232323",
       },
     },
   },
