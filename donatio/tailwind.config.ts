@@ -13,6 +13,17 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      fontFamily: {
+        inter: ["Inter", "sans-serif"],
+        montserrat: ["Montserrat", "sans-serif"],
+      },
+      colors: {
+        "donatio-white": "#FAFAFA",
+        "donatio-cream": "#F8FAEC",
+        "donatio-green": "#50A45A",
+        "donatio-red": "#EA4141",
+        "donatio-black": "#232323",
+      },
     },
   },
   plugins: [],
