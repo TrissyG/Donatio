@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useTransition } from "react";
 import PillButton from "./_components/ui/PillButton";
 import Card from "./_components/posts/Card";
 import { Message, User } from "@/types/types";
@@ -8,13 +8,14 @@ import { AnimatedStandingHoratio } from "./_components/animation/standingHoratio
 import Typewriter from "typewriter-effect";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { AnimatedStandingHoratio } from "./_components/animation/standingHoratio/AnimatedStandingHoratio";
+import Link from "next/link";
 
 export default function Home() {
   const [isForYouSelected, setIsForYouSelected] = useState(true);
   const [users, setUsers] = useState<User[]>();
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState("");
+  const [showButton, setShowButton] = useState(false);
 
   const handleForYouClick = () => {
     setIsForYouSelected(true);
@@ -36,6 +37,10 @@ export default function Home() {
             sender: "horatio",
           },
         ]);
+
+        setTimeout(() => {
+          setShowButton(true);
+        }, 2000);
       }, 1000);
     }
   };
@@ -175,6 +180,18 @@ export default function Home() {
                         </div>
                       </div>
                     ))}
+
+                    {showButton ? (
+                      <>
+                        <Link href="/charity/tnc" className=" ">
+                          <p className="ml-[200px] my-2 w-[80px] rounded-md p-2 text-center bg-[#d1d5db] transition-all duration-300 hover:bg-donatio-green">
+                            View more
+                          </p>
+                        </Link>
+                      </>
+                    ) : (
+                      <></>
+                    )}
                   </div>
                   <div className="absolute bottom-2 right-[0px] flex items-center">
                     <input
