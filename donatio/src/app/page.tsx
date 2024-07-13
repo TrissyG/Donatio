@@ -1,8 +1,10 @@
 "use client";
 import { useEffect, useState } from "react";
 import PillButton from "./_components/ui/PillButton";
+
+import Card from "./_components/posts/Card";
 import { getEmily } from "@/gateway/getEmily";
-import Navbar from "./_components/navigation/Navbar";
+
 
 export default function Home() {
   const [isForYouSelected, setIsForYouSelected] = useState(true);
@@ -48,6 +50,13 @@ export default function Home() {
           Explore
         </PillButton>
       </div>
+      <Card
+        imgSrc={"/piermanuele-sberni-m9dyZivCp2A-unsplash.jpg"}
+        caption={"Lorem ipsum Lorem ipsum Lorem ipsum"}
+        username={"regular_donor24"}
+        timePosted={"27"}
+        likes={26.4}
+      />
       <div>{emily}</div>
     </main>
   );
