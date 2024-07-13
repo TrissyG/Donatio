@@ -1,14 +1,16 @@
 "use client";
-import { useEffect, useState, useTransition } from "react";
+
+import {useEffect, useState} from "react";
 import PillButton from "./_components/ui/PillButton";
 import Card from "./_components/posts/Card";
-import { Message, User } from "@/types/types";
-import { getUsers } from "@/gateway/Users/getUsers";
-import { AnimatedStandingHoratio } from "./_components/animation/standingHoratio/AnimatedStandingHoratio";
+import {Message, User} from "@/types/types";
+import {getUsers} from "@/gateway/Users/getUsers";
+import {AnimatedStandingHoratio} from "./_components/animation/standingHoratio/AnimatedStandingHoratio";
 import Typewriter from "typewriter-effect";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+
 
 export default function Home() {
   const [isForYouSelected, setIsForYouSelected] = useState(true);
@@ -54,24 +56,40 @@ export default function Home() {
   }, []);
 
   const post = {
+    imgSrc: "/mohammad-minhaz-uDG2-d4oUn8-unsplash.jpg",
+    theme: "Climate change",
+    caption:
+      "drip drip rain drip weee treeees treeeestreeees treeeestreeeestreeees",
+    likes: 123,
+    avatarSrc: "/avatar.png",
+  };
+  const post2 = {
     imgSrc: "/piermanuele-sberni-m9dyZivCp2A-unsplash.jpg",
-    caption: "Lorem ipsum Lorem ipsum Lorem ipsum",
-    username: "regular_donor24",
-    timePosted: "27",
-    likes: 26.4,
+    caption: "swoosh goes the volcano swoosh weee lava lava hot floor is lava",
+    theme: "Volcanoes",
+    likes: 23454,
+    avatarSrc: "/mascot1.svg",
   };
 
   const forYouArray = [
     post,
+    post2,
     post,
+    post2,
     post,
+    post2,
     post,
+    post2,
     post,
-    post,
-    post,
-    post,
-    post,
-    post,
+    post2,
+    // post,
+    // post,
+    // post,
+    // post,
+    // post,
+    // post,
+    // post,
+    // post,
   ];
 
   const causeTabs = ["All", "Climate Change", "Poverty", "Poor Education"];

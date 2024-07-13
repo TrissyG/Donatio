@@ -1,10 +1,10 @@
 import "./AnimatedStandingHoratioStyles.css";
 
-interface AnimatedChefHoratioProps {
+interface AnimatedStandingHoratioProps {
     scale: number;
 }
 
-export const AnimatedStandingHoratio = ({scale = 1} : AnimatedChefHoratioProps) => {
+export const AnimatedStandingHoratio = ({scale = 1} : AnimatedStandingHoratioProps) => {
 
     const svgWidth = 93 * scale;
     const svgHeight = 92 * scale;
