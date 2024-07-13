@@ -30,14 +30,14 @@ export default function Home() {
     theme: "Climate change",
     caption:
       "drip drip rain drip weee treeees treeeestreeees treeeestreeeestreeees",
-    likes: 2.4,
-    avatarSrc: "/author.png",
+    likes: 123,
+    avatarSrc: "/avatar.png",
   };
   const post2 = {
     imgSrc: "/piermanuele-sberni-m9dyZivCp2A-unsplash.jpg",
     caption: "swoosh goes the volcano swoosh weee lava lava hot floor is lava",
     theme: "Volcanoes",
-    likes: 26.4,
+    likes: 23454,
     avatarSrc: "/author.png",
   };
 

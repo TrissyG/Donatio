@@ -13,10 +13,20 @@ interface CardProps {
 
 const Card = ({ imgSrc, likes, caption, theme, avatarSrc }: CardProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [likeCount, setLikeCount] = useState(likes);
+  const [isLiked, setIsLiked] = useState(false);
 
   function truncateCaption(desc: string) {
     return desc.length > 30 ? `${desc.substring(0, 30)}...` : desc;
   }
+
+  function handleLikeClick() {
+    setIsLiked(!isLiked);
+    setLikeCount((prevCount) => (isLiked ? prevCount - 1 : prevCount + 1));
+  }
+
+  const truncatedLikes =
+    likeCount >= 1000 ? `${(likeCount / 1000).toFixed(1)}k` : likeCount;
 
   function handleCaptionClick() {
     setIsExpanded(!isExpanded);
@@ -30,9 +40,15 @@ const Card = ({ imgSrc, likes, caption, theme, avatarSrc }: CardProps) => {
         className="rounded-lg m-4 w-full h-full"
       />
       <div className="absolute top-8 right-4 p-2 bg-black bg-opacity-50 rounded-full cursor-pointer">
-        <HeartHandshake className="text-white" />
+        <div className="flex items-center justify-center gap-2">
+          <HeartHandshake
+            className={`text-white ${isLiked ? "text-red-500" : ""}`}
+            onClick={handleLikeClick}
+          />
+          <p className="text-white cursor-default">{truncatedLikes} likes</p>
+        </div>
       </div>
-
+      <div className="absolute top-8 ml-16 p-2 bg-black bg-opacity-50 text-white rounded-full"></div>
       <div className="absolute top-8 left-4 p-2 bg-black bg-opacity-50 text-white rounded-full">
         <p>{theme}</p>
       </div>
@@ -46,16 +62,10 @@ const Card = ({ imgSrc, likes, caption, theme, avatarSrc }: CardProps) => {
             isExpanded ? "items-start" : "items-center"
           }`}
         >
-          <img src="./avatar.png" alt="" className="max-w-10" />
+          <img src={avatarSrc} alt="" className="max-w-10" />
           <p className={`cursor-pointer`} onClick={handleCaptionClick}>
             {isExpanded ? caption : truncateCaption(caption)}
           </p>
-          <img src={avatarSrc} alt="" className="" />
-          <img
-            src="donut.png"
-            alt=""
-            className="self-center hover:cursor-pointer"
-          />
         </div>
       </div>
     </div>
