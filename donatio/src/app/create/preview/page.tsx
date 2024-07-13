@@ -3,12 +3,21 @@ import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 
 import { createPost } from "@/gateway/Posts/postPosts";
 import { Post } from "@/types/types";
+import { completeChallenge } from "@/gateway/Challenges/putChallenges";
 
-export default function Page() {
+export default function PageWithSuspense() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Page />
+    </Suspense>
+  );
+}
+
+function Page() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const imageUrl = searchParams.get("imageUrl");
@@ -19,7 +28,8 @@ export default function Page() {
     likes: 0,
     reposts: 0,
     time: new Date().toISOString(),
-    user_image: "",
+    user_image:
+      "https://firebasestorage.googleapis.com/v0/b/donatio-6b3f9.appspot.com/o/avatar.png?alt=media&token=2e910e53-73c4-406b-b1ab-ed70f7317b29",
     username: "",
   });
 
@@ -39,8 +49,9 @@ export default function Page() {
     try {
       setLoading(true);
       await createPost(newPost, imageUrl);
+      await completeChallenge("1");
       setLoading(false);
-      router.push("http://localhost:3000/");
+      router.push("/");
     } catch (error) {
       console.log(error);
     }

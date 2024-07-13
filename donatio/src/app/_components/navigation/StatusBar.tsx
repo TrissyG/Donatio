@@ -29,8 +29,6 @@ const StatusBar = ({}: StatusBarProps) => {
     getUser();
   }, []);
 
-  if (loading) return <div></div>;
-
   return (
     <nav className="my-4 px-6">
       <div className="flex items-center justify-between rounded-xl">
@@ -42,7 +40,7 @@ const StatusBar = ({}: StatusBarProps) => {
             height={20}
             className=""
           />{" "}
-          {user[0].donuts}
+          {loading ? "" : user[0].donuts}
         </div>
         <Image src="/logo.svg" alt="logo" width={100} height={30} />
         <Link href={"/create"}>
