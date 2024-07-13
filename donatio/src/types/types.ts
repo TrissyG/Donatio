@@ -1,8 +1,9 @@
 export interface User {
   causes: string[];
-  donut_balance: number;
-  donut_earned: number;
+  donuts: number;
+  donuts_earned: number;
   donut_given: number;
+  name: string;
 }
 
 export interface Post {
