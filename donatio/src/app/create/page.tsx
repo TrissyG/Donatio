@@ -1,37 +1,73 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Expand } from "lucide-react";
-import { redirect } from "next/navigation";
+import { Expand, Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
-
-interface createPageProps {}
+import React, { useRef, useState } from "react";
+import Canvas from "../_components/Canvas";
+import generateImage from "@/gateway/Images/generateImage";
+import { postImage } from "@/gateway/Images/postImage";
+import Image from "next/image";
 
 export default function Page() {
   const [loading, setLoading] = useState(false);
-
+  // const [canvasImage, setCanvasImage] = useState<Blob | null>(null);
+  const [prompt, setPrompt] = useState<string>("");
+  const canvasRef = useRef<HTMLCanvasElement>(null);
   const router = useRouter();
 
-  const onGenerate = () => {
-    setLoading(true);
+  const handlePromptChange = (
+    event: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
+    setPrompt(event.target.value);
+  };
 
-    try {
-      setTimeout(() => {
-        setLoading(false);
-        router.push("http://localhost:3000/create/preview");
-      }, 3000);
-    } catch (error) {}
+  // const getCanvasImage = () => {
+  //   if (canvasRef.current) {
+  //     canvasRef.current.toBlob((blob) => {
+  //       if (blob) {
+  //         setCanvasImage(blob);
+  //       }
+  //     });
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   getCanvasImage();
+  // }, []);
+
+  const onGenerate = async () => {
+    setLoading(true);
+    // canvasRef.current?.toBlob(async (blob) => {
+    //   if (blob) {
+    //     const generatedImage = await generateImage(blob, prompt);
+    //     const imageUrl = await postImage(generatedImage);
+    //   }
+    // });
+
+    setTimeout(() => {
+      setLoading(false);
+      router.push("http://localhost:3000/create/preview");
+    }, 3000);
   };
 
   return (
     <div>
       {loading ? (
         <div>
-          <div className="mx-8 bg-white grid place-items-center mt-12 shadow-md rounded-lg h-[400px]">
-            Mascot
+          <div className="mx-8 grid place-items-center mt-12 h-[400px]">
+            <Image
+              src="/mascot4.svg"
+              alt="mascot-cooking"
+              width={320}
+              height={400}
+            />
           </div>
-          <p className="mx-8 mt-4 text-lg ">Generating your Post...</p>
+          <div className="text-xl font-semibold">
+            <p className="mx-8 mt-4 text-lg flex items-center gap-4">
+              Generating your Post <Loader2 className="animate-spin w-6 h-6" />
+            </p>
+          </div>
         </div>
       ) : (
         <div>
@@ -39,11 +75,12 @@ export default function Page() {
             Generate a Post
           </h2>
           <h3 className="text-lg mx-8 font-bold mt-2 mb-4">Draw anything</h3>
+
           <div
             id="canvas"
-            className="mx-8 h-[300px] shadow-md bg-white grid place-items-center rounded-lg mb-6 relative"
+            className="mx-8 h-[300px] shadow-md place-items-center rounded-lg mb-6 relative"
           >
-            <p>Canvas</p>
+            <Canvas ref={canvasRef} />
             <Expand
               className="absolute top-4 right-4 cursor-pointer transition-all duration-250 hover:text-donatio-green"
               size={20}
@@ -55,6 +92,8 @@ export default function Page() {
             </label>
             <textarea
               className="w-[350px] p-4 rounded-lg shadow-md border-2 border-donatio-green"
+              onChange={handlePromptChange}
+              value={prompt}
               rows={4}
             ></textarea>
           </form>

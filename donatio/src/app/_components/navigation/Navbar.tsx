@@ -38,7 +38,7 @@ export default function Navbar() {
 
   return (
     <div className="w-[340px] h-[65px] bg-donatio-black ml-[30px] rounded-full absolute bottom-[15px]">
-      <ul className="flex flex-row gap-12 items-center justify-between px-3 mt-[8px]">
+      <ul className="flex flex-row gap-12 items-center justify-around px-3 mt-[8px]">
         {icons.map((icon, index) => (
           <Link
             href={icon.url}

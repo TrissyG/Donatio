@@ -1,4 +1,5 @@
 "use client";
+import { postImage } from "@/gateway/Images/postImage";
 import { createPost } from "@/gateway/Posts/postPosts";
 import { Post } from "@/types/types";
 import React, { useState } from "react";
@@ -28,7 +29,8 @@ const CreatePostComponent: React.FC = () => {
 
   const handleUpload = async () => {
     if (file) {
-      await createPost(newPost, file);
+      const imageUrl = await postImage(file);
+      await createPost(newPost, imageUrl);
     } else {
       console.error("No file selected");
     }
