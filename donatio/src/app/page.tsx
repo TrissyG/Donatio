@@ -2,6 +2,7 @@
 import { useState } from "react";
 import PillButton from "./_components/ui/PillButton";
 import Navbar from "./_components/Navbar";
+import Card from "./_components/posts/Card";
 
 export default function Home() {
   const [isForYouSelected, setIsForYouSelected] = useState(true);
@@ -38,6 +39,7 @@ export default function Home() {
           Explore
         </PillButton>
       </div>
+      <Card imgSrc={"/piermanuele-sberni-m9dyZivCp2A-unsplash.jpg"} />
     </main>
   );
 }
