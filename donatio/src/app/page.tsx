@@ -5,7 +5,6 @@ import PillButton from "./_components/ui/PillButton";
 import Card from "./_components/posts/Card";
 import { getEmily } from "@/gateway/getEmily";
 
-
 export default function Home() {
   const [isForYouSelected, setIsForYouSelected] = useState(true);
   const [emily, setEmily] = useState("");
@@ -25,6 +24,28 @@ export default function Home() {
     };
     getUser();
   });
+
+  const post = {
+    imgSrc: "/piermanuele-sberni-m9dyZivCp2A-unsplash.jpg",
+    caption: "Lorem ipsum Lorem ipsum Lorem ipsum",
+    username: "regular_donor24",
+    timePosted: "27",
+    likes: 26.4,
+  };
+
+  const forYouArray = [
+    post,
+    post,
+    post,
+    post,
+    post,
+    post,
+    post,
+    post,
+    post,
+    post,
+  ];
+  const exploreArray = [post, post, post];
 
   return (
     <main className="flex-1">
@@ -50,13 +71,12 @@ export default function Home() {
           Explore
         </PillButton>
       </div>
-      <Card
-        imgSrc={"/piermanuele-sberni-m9dyZivCp2A-unsplash.jpg"}
-        caption={"Lorem ipsum Lorem ipsum Lorem ipsum"}
-        username={"regular_donor24"}
-        timePosted={"27"}
-        likes={26.4}
-      />
+      <div className="pt-8 max-h-[625px] overflow-y-auto no-scrollbar">
+        {isForYouSelected
+          ? forYouArray.map((post, index) => <Card key={index} {...post} />)
+          : exploreArray.map((post, index) => <Card key={index} {...post} />)}
+      </div>
+
       <div>{emily}</div>
     </main>
   );
