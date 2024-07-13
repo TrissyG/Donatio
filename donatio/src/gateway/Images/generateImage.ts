@@ -25,7 +25,7 @@ export default async function generateImage(image: Blob, prompt: string) {
   if (response.status === 200) {
     try {
       const buffer = Buffer.from(response.data);
-      return new Blob([buffer], { type: "image/jpeg" });
+      return new Blob([buffer]);
     } catch (error) {
       console.error(error);
       throw new Error("Failed to generate image");
