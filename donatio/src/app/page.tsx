@@ -7,12 +7,14 @@ import {getUsers} from "@/gateway/Users/getUsers";
 import {AnimatedStandingHoratio} from "./_components/animation/standingHoratio/AnimatedStandingHoratio";
 import Typewriter from "typewriter-effect";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   const [isForYouSelected, setIsForYouSelected] = useState(true);
   const [users, setUsers] = useState<User[]>();
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState("");
+  const [showButton, setShowButton] = useState(false);
 
   const handleForYouClick = () => {
     setIsForYouSelected(true);
@@ -29,8 +31,15 @@ export default function Home() {
       setTimeout(() => {
         setMessages((prevMessages) => [
           ...prevMessages,
-          { text: "This is a response from Horatio AI!", sender: "horatio" },
+          {
+            text: `Horatio recommends The Nature Conservancy!`,
+            sender: "horatio",
+          },
         ]);
+
+        setTimeout(() => {
+          setShowButton(true);
+        }, 2000);
       }, 1000);
     }
   };
@@ -44,24 +53,40 @@ export default function Home() {
   }, []);
 
   const post = {
+    imgSrc: "/mohammad-minhaz-uDG2-d4oUn8-unsplash.jpg",
+    theme: "Climate change",
+    caption:
+      "drip drip rain drip weee treeees treeeestreeees treeeestreeeestreeees",
+    likes: 123,
+    avatarSrc: "/avatar.png",
+  };
+  const post2 = {
     imgSrc: "/piermanuele-sberni-m9dyZivCp2A-unsplash.jpg",
-    caption: "Lorem ipsum Lorem ipsum Lorem ipsum",
-    username: "regular_donor24",
-    timePosted: "27",
-    likes: 26.4,
+    caption: "swoosh goes the volcano swoosh weee lava lava hot floor is lava",
+    theme: "Volcanoes",
+    likes: 23454,
+    avatarSrc: "/mascot1.svg",
   };
 
   const forYouArray = [
     post,
+    post2,
     post,
+    post2,
     post,
+    post2,
     post,
+    post2,
     post,
-    post,
-    post,
-    post,
-    post,
-    post,
+    post2,
+    // post,
+    // post,
+    // post,
+    // post,
+    // post,
+    // post,
+    // post,
+    // post,
   ];
 
   const causeTabs = ["All", "Climate Change", "Poverty", "Poor Education"];
@@ -170,6 +195,18 @@ export default function Home() {
                         </div>
                       </div>
                     ))}
+
+                    {showButton ? (
+                      <>
+                        <Link href="/charity/tnc" className=" ">
+                          <p className="ml-[200px] my-2 w-[80px] rounded-md p-2 text-center bg-[#d1d5db] transition-all duration-300 hover:bg-donatio-green">
+                            View more
+                          </p>
+                        </Link>
+                      </>
+                    ) : (
+                      <></>
+                    )}
                   </div>
                   <div className="absolute bottom-2 right-[0px] flex items-center">
                     <input
@@ -197,7 +234,11 @@ export default function Home() {
           </div>
         )}
 
-        <div className="flex gap-4 items-center pl-4 overflow-x-hidden mt-6">
+        <div
+          className={`flex gap-4 items-center pl-4 overflow-x-hidden mt-6 ${
+            isForYouSelected ? "hidden" : ""
+          }`}
+        >
           {causeTabs.map((cause, index) => (
             <div
               key={index}
@@ -210,7 +251,11 @@ export default function Home() {
           ))}
         </div>
 
-        <div className="flex flex-col overflow-y-auto gap-4 mt-6 px-4 mb-4 no-scrollbar">
+        <div
+          className={`flex flex-col overflow-y-auto gap-4 mt-6 px-4 mb-4 no-scrollbar ${
+            isForYouSelected ? "hidden" : ""
+          }`}
+        >
           {causes.map((cause, index) => (
             <div
               key={index}

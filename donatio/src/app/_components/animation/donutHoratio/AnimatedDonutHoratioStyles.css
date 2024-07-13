@@ -1,0 +1,67 @@
+svg #top-body, #details {
+  animation: 2s upDown infinite;
+}
+
+@keyframes upDown {
+  0%, 100% {
+    transform: translateY(0%);
+  }
+  50% {
+    transform: translateY(2%);
+  }
+}
+
+svg #right-ear {
+  animation: 2s rotateCW infinite;
+  transform-origin: 80% 10%;
+}
+
+@keyframes rotateCW {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-2deg);
+  }
+}
+
+svg #left-ear {
+  animation: 2s rotateACW infinite;
+  transform-origin: 20% 10%;
+}
+
+@keyframes rotateACW {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+}
+
+svg #eyebrows {
+  animation: 2s eyebrowsY infinite;
+}
+
+@keyframes eyebrowsY {
+  0%, 100% {
+    transform: translateY(0%);
+  }
+  50% {
+    transform: translateY(-1%);
+  }
+}
+
+svg #hand-tray {
+  animation: 2s animateHandTray infinite;
+}
+
+@keyframes animateHandTray {
+  0%, 100% {
+    transform: translateY(0%);
+  }
+  50% {
+    transform: translateY(2%);
+  }
+}
+
