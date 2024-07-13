@@ -216,7 +216,11 @@ export default function Home() {
           </div>
         )}
 
-        <div className="flex gap-4 items-center pl-4 overflow-x-hidden mt-6">
+        <div
+          className={`flex gap-4 items-center pl-4 overflow-x-hidden mt-6 ${
+            isForYouSelected ? "hidden" : ""
+          }`}
+        >
           {causeTabs.map((cause, index) => (
             <div
               key={index}
@@ -229,7 +233,11 @@ export default function Home() {
           ))}
         </div>
 
-        <div className="flex flex-col overflow-y-auto gap-4 mt-6 px-4 mb-4 no-scrollbar">
+        <div
+          className={`flex flex-col overflow-y-auto gap-4 mt-6 px-4 mb-4 no-scrollbar ${
+            isForYouSelected ? "hidden" : ""
+          }`}
+        >
           {causes.map((cause, index) => (
             <div
               key={index}
