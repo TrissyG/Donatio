@@ -4,7 +4,7 @@ import PillButton from "./_components/ui/PillButton";
 import Card from "./_components/posts/Card";
 import { Message, User } from "@/types/types";
 import { getUsers } from "@/gateway/Users/getUsers";
-import { AnimatedStandingHoratio } from "./_components/animation/AnimatedStandingHoratio";
+import { AnimatedStandingHoratio } from "./_components/animation/standingHoratio/AnimatedStandingHoratio";
 import Typewriter from "typewriter-effect";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -127,7 +127,7 @@ export default function Home() {
               Horatio AI
             </h1>
             <div className="flex gap-6">
-              <AnimatedStandingHoratio />
+              <AnimatedStandingHoratio scale={0} />
               <div className="w-[700px] bg-white h-[300px] shadow-lg rounded-xl relative">
                 <div className="absolute bottom-2 right-[5px]">
                   <div className="mb-14">
