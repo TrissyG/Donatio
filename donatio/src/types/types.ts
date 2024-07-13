@@ -15,3 +15,11 @@ export interface Post {
   user_image: string;
   username: string;
 }
+
+export interface Challenge {
+  description: string;
+  donut: number;
+  icon: string;
+  isCompleted: boolean;
+  title: string;
+}

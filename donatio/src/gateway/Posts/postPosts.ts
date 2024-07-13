@@ -8,7 +8,7 @@ export async function createPost(
   imageFile: File
 ) {
   try {
-    const storageRef = ref(storage, `images/${imageFile.name}`);
+    const storageRef = ref(storage, `posts/${imageFile.name}`);
 
     const snapshot = await uploadBytes(storageRef, imageFile);
     const imageUrl = await getDownloadURL(snapshot.ref);
