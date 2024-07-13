@@ -1,7 +1,6 @@
-import { db, storage } from "@/firebase/setup";
+import { db } from "@/firebase/setup";
 import { Post } from "@/types/types";
 import { collection, addDoc } from "@firebase/firestore";
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
 export async function createPost(
   newPost: Omit<Post, "image">,
