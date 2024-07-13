@@ -4,11 +4,12 @@ import Card from "../_components/posts/Card";
 
 export default function Page() {
   const post = {
-    imgSrc: "/piermanuele-sberni-m9dyZivCp2A-unsplash.jpg",
-    caption: "Lorem ipsum Lorem ipsum Lorem ipsum",
-    username: "regular_donor24",
-    timePosted: "27",
-    likes: 26.4,
+    imgSrc: "/mohammad-minhaz-uDG2-d4oUn8-unsplash.jpg",
+    theme: "Climate change",
+    caption:
+      "drip drip rain drip weee treeees treeeestreeees treeeestreeeestreeees",
+    likes: 123,
+    avatarSrc: "/avatar.png",
   };
 
   const forYouArray = [post, post, post, post];
@@ -43,14 +44,7 @@ export default function Page() {
 
       <div className="pt-2 max-h-[480px] overflow-y-auto no-scrollbar">
         {forYouArray.map((post, index) => (
-          <Card
-            key={index}
-            imgSrc={post.imgSrc}
-            caption={post.caption}
-            username={post.username}
-            timePosted={post.timePosted}
-            likes={post.likes}
-          />
+          <Card {...post} />
         ))}
       </div>
     </div>
