@@ -35,8 +35,7 @@ export default function Home() {
   };
   const post2 = {
     imgSrc: "/piermanuele-sberni-m9dyZivCp2A-unsplash.jpg",
-    caption:
-      "swoosh goes the volcano swoosh goes the volcano swoosh goes the volcano swoosh goes the volcano swoosh goes the volcano swoosh goes the volcano swoosh goes the volcano swoosh goes the volcano ",
+    caption: "swoosh goes the volcano swoosh weee lava lava hot floor is lava",
     theme: "Volcanoes",
     likes: 26.4,
     avatarSrc: "/author.png",

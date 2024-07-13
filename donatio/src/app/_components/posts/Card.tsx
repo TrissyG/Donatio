@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import { Heart } from "lucide-react";
+import { HeartHandshake } from "lucide-react";
 
 interface CardProps {
   caption: string;
@@ -30,7 +30,7 @@ const Card = ({ imgSrc, likes, caption, theme, avatarSrc }: CardProps) => {
         className="rounded-lg m-4 w-full h-full"
       />
       <div className="absolute top-8 right-4 p-2 bg-black bg-opacity-50 rounded-full cursor-pointer">
-        <Heart className="text-white" />
+        <HeartHandshake className="text-white" />
       </div>
 
       <div className="absolute top-8 left-4 p-2 bg-black bg-opacity-50 text-white rounded-full">
@@ -42,15 +42,20 @@ const Card = ({ imgSrc, likes, caption, theme, avatarSrc }: CardProps) => {
         }`}
       >
         <div
-          className={`flex gap-4 items-start ${
+          className={`flex gap-4 ${
             isExpanded ? "items-start" : "items-center"
           }`}
         >
           <img src="./avatar.png" alt="" className="max-w-10" />
-          <p className="cursor-pointer" onClick={handleCaptionClick}>
+          <p className={`cursor-pointer`} onClick={handleCaptionClick}>
             {isExpanded ? caption : truncateCaption(caption)}
           </p>
-          <img src={avatarSrc} alt="" />
+          <img src={avatarSrc} alt="" className="" />
+          <img
+            src="donut.png"
+            alt=""
+            className="self-center hover:cursor-pointer"
+          />
         </div>
       </div>
     </div>
