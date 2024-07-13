@@ -74,11 +74,13 @@ export default function Page() {
   const [challenges, setChallenges] = useState<Challenge[] | void>([]);
   const [user, setUser] = useState<User[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const [dailiesCompleted, setDailiesCompleted] = useState<number>(0);
 
   const onClaim = async (a: number, b: number, c: number) => {
     try {
       setLoading(true);
       await addDonuts("1", a, b, c);
+      setDailiesCompleted(dailiesCompleted + 1);
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -114,7 +116,9 @@ export default function Page() {
                   key={date.date}
                   className="flex items-center justify-center flex-col"
                 >
-                  <p className="text-[17px] text-opacity-60">{date.day}</p>
+                  <p className="text-[17px] text-opacity-60 text-donatio-green">
+                    {date.day}
+                  </p>
                   <p className="font-bold px-2 py-[5px] bg-donatio-green bg-opacity-15 rounded-full">
                     {date.date}
                   </p>
@@ -136,14 +140,42 @@ export default function Page() {
                   key={date.date}
                   className="flex items-center justify-center flex-col p-2"
                 >
-                  <p className="text-[17px] text-opacity-50 ">{date.day}</p>
+                  <p className="text-[17px] text-opacity-50 text-donatio-green ">
+                    {date.day}
+                  </p>
                   <p className="font-bold py-[5px]">{date.date}</p>
                 </div>
               );
           }
         })}
       </div>
-      <div className="my-4 mx-4 bg-white rounded-2xl h-[300px] shadow-lg" />
+      <div className="my-4 mx-6 rounded-2xl h-[300px] flex gap-4 justify-end">
+        <div className="pt-24 flex flex-col gap-4">
+          <div className="font-semibold">
+            Complete you daily challenges with dodo to get donuts.
+          </div>
+          <div className="relative w-[125px] border-donatio-green border-2 rounded-full h-10 grid place-items-center shadow-md">
+            <div className="absolute rounded-full left-0 top-0 bg-donatio-green bg-opacity-20 h-10 w-full" />
+            <div
+              className={`absolute rounded-full left-0 top-0 bg-donatio-green bg-opacity-70 h-10 w-${
+                dailiesCompleted * (100 / 3)
+              }%
+              }`}
+            />
+            <p className="text-[14px] font-semibold absolute z-20">
+              {dailiesCompleted} / 3
+            </p>
+          </div>
+        </div>
+
+        <Image
+          src="/mascot3.svg"
+          alt="mascot-standing"
+          width={200}
+          height={300}
+          className="drop-shadow-xl"
+        />
+      </div>
 
       <div className="flex flex-col gap-2">
         {challenges?.map((challenge) => {
@@ -164,7 +196,7 @@ export default function Page() {
                 <div
                   key={challenge.title}
                   className={`${
-                    challenge.donut == 80 ? "bg-opacity-50" : " bg-opacity-15"
+                    challenge.donut == 80 ? "bg-opacity-40" : " bg-opacity-15"
                   } bg-donatio-green flex items-center justify-between mx-4 px-2 rounded-2xl h-[80px] shadow-lg`}
                 >
                   <div className="flex items-center gap-2">
@@ -183,15 +215,15 @@ export default function Page() {
                       </div>
                     </div>
                   </div>
-                  <div className="flex flex-col gap-[2px] flex-1">
-                    <div className="flex items-center gap-2">
+                  <div className="flex flex-col gap-[4px] flex-1 items-center">
+                    <div className="flex items-center gap-2 ">
                       <Image
-                        src="/challenge-dark.svg"
-                        alt="challenge"
-                        width={20}
-                        height={20}
+                        src="/donut.png"
+                        alt="donuts"
+                        width={15}
+                        height={15}
                       />
-                      <p>{challenge.donut}</p>
+                      <p className="text-[14px] font-bold">{challenge.donut}</p>
                     </div>
                     {challenge.isCompleted ? (
                       <Dialog>
@@ -230,7 +262,7 @@ export default function Page() {
                         </DialogContent>
                       </Dialog>
                     ) : (
-                      <div className="px-2 py-1 border-2 border-donatio-green flex-shrink-0 w-[50px] rounded-full">
+                      <div className="px-2 py-1 border-2 border-donatio-green flex-shrink-0 w-[55px] rounded-full text-center">
                         <p className="text-sm font-bold">0 / 1</p>
                       </div>
                     )}

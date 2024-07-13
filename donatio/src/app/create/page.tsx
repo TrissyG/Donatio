@@ -1,12 +1,13 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Expand } from "lucide-react";
+import { Expand, Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React, { useRef, useState } from "react";
 import Canvas from "../_components/Canvas";
 import generateImage from "@/gateway/Images/generateImage";
 import { postImage } from "@/gateway/Images/postImage";
+import Image from "next/image";
 
 export default function Page() {
   const [loading, setLoading] = useState(false);
@@ -37,12 +38,12 @@ export default function Page() {
 
   const onGenerate = async () => {
     setLoading(true);
-    canvasRef.current?.toBlob(async (blob) => {
-      if (blob) {
-        const generatedImage = await generateImage(blob, prompt);
-        const imageUrl = await postImage(generatedImage);
-      }
-    });
+    // canvasRef.current?.toBlob(async (blob) => {
+    //   if (blob) {
+    //     const generatedImage = await generateImage(blob, prompt);
+    //     const imageUrl = await postImage(generatedImage);
+    //   }
+    // });
 
     setTimeout(() => {
       setLoading(false);
@@ -54,10 +55,19 @@ export default function Page() {
     <div>
       {loading ? (
         <div>
-          <div className="mx-8 bg-white grid place-items-center mt-12 shadow-md rounded-lg h-[400px]">
-            Mascot
+          <div className="mx-8 grid place-items-center mt-12 h-[400px]">
+            <Image
+              src="/mascot4.svg"
+              alt="mascot-cooking"
+              width={320}
+              height={400}
+            />
           </div>
-          <p className="mx-8 mt-4 text-lg ">Generating your Post...</p>
+          <div className="text-xl font-semibold">
+            <p className="mx-8 mt-4 text-lg flex items-center gap-4">
+              Generating your Post <Loader2 className="animate-spin w-6 h-6" />
+            </p>
+          </div>
         </div>
       ) : (
         <div>

@@ -31,10 +31,19 @@ const StatusBar = ({}: StatusBarProps) => {
   if (loading) return <div>Loading...</div>;
 
   return (
-    <nav className="my-4 px-10">
+    <nav className="my-4 px-6">
       <div className="flex items-center justify-between rounded-xl">
-        <div>Donut {user[0].donuts}</div>
-        <div>Logo</div>
+        <div className="flex items-center gap-2 px-4 font-semibold">
+          <Image
+            src="/donut.png"
+            alt="logo"
+            width={20}
+            height={20}
+            className=""
+          />{" "}
+          {user[0].donuts}
+        </div>
+        <Image src="/logo.svg" alt="logo" width={100} height={30} />
         <Link href={"/create"}>
           <Button
             onClick={() => onCreate}

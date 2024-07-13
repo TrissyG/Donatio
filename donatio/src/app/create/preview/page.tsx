@@ -1,6 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { completeChallenge } from "@/gateway/Challenges/putChallenges";
+import { Loader2 } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
@@ -12,11 +13,13 @@ export default function Page() {
   const onSubmit = async (e: any) => {
     e.preventDefault();
     try {
-      console.log(1);
       setLoading(true);
-      await completeChallenge("1");
-      setLoading(false);
-      router.push("http://localhost:3000/");
+      // await completeChallenge("1");
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
+
+      // router.push("http://localhost:3000/");
     } catch (error) {
       console.log(error);
     }
@@ -31,7 +34,7 @@ export default function Page() {
           }
           alt="image1"
           width={350}
-          height={520}
+          height={450}
           className="rounded-2xl shadow-lg border-2 border-donatio-green"
         />
       </div>
@@ -43,10 +46,16 @@ export default function Page() {
           rows={4}
         ></textarea>
         <Button
-          className="align-right self-end px-[50px] rounded-full bg-donatio-green text-[16px] font-bold"
+          className="align-right self-end w-[150px] rounded-full bg-donatio-green text-[16px] font-bold"
           onClick={onSubmit}
         >
-          Post
+          {loading ? (
+            <p className="flex">
+              Posting <Loader2 className="animate-spin ml-2 " />
+            </p>
+          ) : (
+            "Post"
+          )}
         </Button>
       </form>
     </div>
