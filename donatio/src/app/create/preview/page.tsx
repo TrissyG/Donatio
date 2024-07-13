@@ -7,6 +7,7 @@ import React, { Suspense, useState } from "react";
 
 import { createPost } from "@/gateway/Posts/postPosts";
 import { Post } from "@/types/types";
+import { completeChallenge } from "@/gateway/Challenges/putChallenges";
 
 export default function PageWithSuspense() {
   return (
@@ -47,6 +48,7 @@ function Page() {
     try {
       setLoading(true);
       await createPost(newPost, imageUrl);
+      await completeChallenge("1");
       setLoading(false);
       router.push("http://localhost:3000/");
     } catch (error) {
