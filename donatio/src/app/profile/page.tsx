@@ -42,11 +42,11 @@ export default function Page() {
       </div>
       <div className="border-b-[1px] border-opacity-20 border-black mt-6" />
 
-      <div className="pt-2 max-h-[480px] overflow-y-auto no-scrollbar">
+      {/* <div className="pt-2 max-h-[480px] overflow-y-auto no-scrollbar">
         {forYouArray.map((post, index) => (
           <Card {...post} />
         ))}
-      </div>
+      </div> */}
     </div>
   );
 }
