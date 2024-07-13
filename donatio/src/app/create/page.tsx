@@ -41,7 +41,6 @@ export default function Page() {
       if (blob) {
         const generatedImage = await generateImage(blob, prompt);
         const imageUrl = await postImage(generatedImage);
-        console.log(imageUrl);
       }
     });
 
