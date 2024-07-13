@@ -83,7 +83,7 @@ const dates = [
 //   },
 // ];
 
-export default function page() {
+export default function Page() {
   const [challenges, setChallenges] = useState<Challenge[] | void>([]);
 
   useEffect(() => {
