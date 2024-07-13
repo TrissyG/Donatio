@@ -11,7 +11,7 @@ import Image from "next/image";
 import { AnimatedArtistHoratio } from "../_components/animation/artistHoratio/AnimatedArtistHoratio";
 
 export default function Page() {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [prompt, setPrompt] = useState<string>("");
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const router = useRouter();
@@ -26,7 +26,7 @@ export default function Page() {
     canvasRef.current?.toBlob(async (blob) => {
       if (blob) {
         try {
-          setLoading(false);
+          setLoading(true);
           const generatedImage = await generateImage(blob, prompt);
           const imageUrl = await postImage(generatedImage);
 

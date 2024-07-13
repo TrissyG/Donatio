@@ -8,7 +8,8 @@ import { getUsers } from "@/gateway/Users/getUsers";
 import { AnimatedStandingHoratio } from "./_components/animation/standingHoratio/AnimatedStandingHoratio";
 import Typewriter from "typewriter-effect";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
+import { Post } from "@/types/types";
+import { getPosts } from "@/gateway/Posts/getPosts";
 import Link from "next/link";
 import { Loader2 } from "lucide-react";
 
@@ -19,6 +20,7 @@ export default function Home() {
   const [inputValue, setInputValue] = useState("");
   const [showButton, setShowButton] = useState(false);
   const [pageLoad, setPageLoad] = useState(true);
+  const [posts, setPosts] = useState<Post[]>([]);
 
   const handleForYouClick = () => {
     setIsForYouSelected(true);
@@ -57,47 +59,18 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    const getPost = async () => {
+      const post = await getPosts();
+      setPosts(post!);
+    };
+    getPost();
+  }, []);
+
+  useEffect(() => {
     setTimeout(() => {
       setPageLoad(false);
     }, 3000);
   }, []);
-
-  const post = {
-    imgSrc: "/mohammad-minhaz-uDG2-d4oUn8-unsplash.jpg",
-    theme: "Climate change",
-    caption:
-      "drip drip rain drip weee treeees treeeestreeees treeeestreeeestreeees",
-    likes: 123,
-    avatarSrc: "/avatar.png",
-  };
-  const post2 = {
-    imgSrc: "/piermanuele-sberni-m9dyZivCp2A-unsplash.jpg",
-    caption: "swoosh goes the volcano swoosh weee lava lava hot floor is lava",
-    theme: "Volcanoes",
-    likes: 23454,
-    avatarSrc: "/mascot1.svg",
-  };
-
-  const forYouArray = [
-    post,
-    post2,
-    post,
-    post2,
-    post,
-    post2,
-    post,
-    post2,
-    post,
-    post2,
-    // post,
-    // post,
-    // post,
-    // post,
-    // post,
-    // post,
-    // post,
-    // post,
-  ];
 
   const causeTabs = ["All", "Climate Change", "Poverty", "Poor Education"];
 
@@ -164,7 +137,9 @@ export default function Home() {
         </div>
         <div className="max-h-[650px] overflow-y-auto no-scrollbar">
           {isForYouSelected ? (
-            forYouArray.map((post, index) => <Card key={index} {...post} />)
+            posts.map((post, index) => (
+              <Card post={post} key={index} {...post} />
+            ))
           ) : (
             <div className="px-4 mt-2">
               <h1 className="text-2xl font-semibold mb-3 text-center">
