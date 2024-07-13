@@ -133,7 +133,7 @@ export default function Home() {
             Explore
           </PillButton>
         </div>
-        <div className="max-h-[650px] overflow-y-auto no-scrollbar">
+        <div className="max-h-[730px] overflow-y-auto no-scrollbar pt-2 pb-[80px]">
           {isForYouSelected ? (
             posts.map((post, index) => (
               <Card post={post} key={index} {...post} />

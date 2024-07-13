@@ -35,20 +35,22 @@ const Card = ({ post }: CardProps) => {
        width={350}
        height={300}
        alt={post.description}
-       className="rounded-lg m-4 w-full h-full"
+       className="rounded-lg mx-2 my-4 w-full h-full"
      />
-     <div className="absolute top-8 right-4 py-2 px-4 bg-black bg-opacity-50 rounded-full cursor-pointer">
+     <div className="absolute top-8 right-4 py-2 px-4 bg-black bg-opacity-50 rounded-lg cursor-pointer">
        <div className="flex items-center justify-center gap-2">
          <HeartHandshake
            className={`${isLiked ? "text-red-500" : "text-white"}`}
            onClick={handleLikeClick}
          />
-         <p className="text-white cursor-default">{truncatedLikes} likes</p>
+         <p className="text-white cursor-default">{truncatedLikes} {truncatedLikes === 1 ? 'like' : 'likes'}</p>
        </div>
      </div>
-     <div className="absolute top-8 left-4 py-2 px-4 bg-black bg-opacity-50 text-white rounded-full">
-       <p>{post.causes}</p>
-     </div>
+     {post.causes && (
+       <div className="absolute top-8 left-4 max-w-[190px] py-2 px-4 bg-black bg-opacity-50 text-white rounded-lg">
+         <p>{post.causes}</p>
+       </div>
+     )}
      <div
        className={`absolute bottom-8 py-4 px-4 w-11/12 bg-black bg-opacity-50 text-white ${
          isExpanded ? "rounded-lg bg-opacity-90" : "rounded-lg"
