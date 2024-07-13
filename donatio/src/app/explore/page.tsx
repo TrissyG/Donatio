@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import PillButton from "../_components/ui/PillButton";
 
-export default function page() {
+export default function Page() {
   const [isForYouSelected, setIsForYouSelected] = useState(true);
 
   const handleForYouClick = () => {
