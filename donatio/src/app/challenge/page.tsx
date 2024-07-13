@@ -56,6 +56,7 @@ const dates = [
 
 const challenges = [
   {
+    id: 1,
     name: "Challenge 1",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     icon: "/challenge.svg",
@@ -63,6 +64,7 @@ const challenges = [
   },
 
   {
+    id: 2,
     name: "Challenge 2",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     icon: "/challenge.svg",
@@ -70,6 +72,7 @@ const challenges = [
   },
 
   {
+    id: 3,
     name: "Challenge 3",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     icon: "/challenge.svg",
@@ -88,7 +91,7 @@ export default function page() {
           switch (date.streak) {
             case "yes":
               return (
-                <div className="flex items-center justify-center flex-col">
+                <div key={date.date} className="flex items-center justify-center flex-col">
                   <p className="text-[17px] text-opacity-60">{date.day}</p>
                   <p className="font-bold px-2 py-[5px] bg-donatio-green bg-opacity-15 rounded-full">
                     {date.date}
@@ -97,14 +100,14 @@ export default function page() {
               );
             case "today":
               return (
-                <div className="flex items-center justify-center flex-col p-2 text-white bg-donatio-black rounded-full">
+                <div key={date.date} className="flex items-center justify-center flex-col p-2 text-white bg-donatio-black rounded-full">
                   <p className="text-[17px] text-opacity-60">{date.day}</p>
                   <p className="font-bold py-[5px]">{date.date}</p>
                 </div>
               );
             default:
               return (
-                <div className="flex items-center justify-center flex-col p-2">
+                <div key={date.date} className="flex items-center justify-center flex-col p-2">
                   <p className="text-[17px] text-opacity-50 ">{date.day}</p>
                   <p className="font-bold py-[5px]">{date.date}</p>
                 </div>
@@ -117,7 +120,7 @@ export default function page() {
       <div className="flex flex-col gap-2">
         {challenges.map((challenge) => {
           return (
-            <div className="flex items-center justify-between mx-4 px-2 bg-donatio-green bg-opacity-15 rounded-2xl h-[80px] shadow-lg">
+            <div key={challenge.id} className="flex items-center justify-between mx-4 px-2 bg-donatio-green bg-opacity-15 rounded-2xl h-[80px] shadow-lg">
               <div className="flex items-center gap-2">
                 <Image
                   src="/challenge-dark.svg"
