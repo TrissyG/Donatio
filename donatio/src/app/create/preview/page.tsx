@@ -2,16 +2,21 @@
 import { Button } from "@/components/ui/button";
 import { completeChallenge } from "@/gateway/Challenges/putChallenges";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 export default function Page() {
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
-  const onPost = async () => {
+  const onSubmit = async (e: any) => {
+    e.preventDefault();
     try {
+      console.log(1);
       setLoading(true);
       await completeChallenge("1");
       setLoading(false);
+      router.push("http://localhost:3000/");
     } catch (error) {
       console.log(error);
     }
@@ -39,7 +44,7 @@ export default function Page() {
         ></textarea>
         <Button
           className="align-right self-end px-[50px] rounded-full bg-donatio-green text-[16px] font-bold"
-          onClick={() => onPost}
+          onClick={onSubmit}
         >
           Post
         </Button>
