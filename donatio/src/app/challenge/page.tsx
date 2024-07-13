@@ -1,11 +1,11 @@
 "use client";
-import { getChallenges } from "@/gateway/Challenges/getChallenges";
-import { getUsers } from "@/gateway/Users/getUsers";
-import { addDonuts } from "@/gateway/Users/putUsers";
-import { Challenge, User } from "@/types/types";
-import { CheckCircle } from "lucide-react";
+import {getChallenges} from "@/gateway/Challenges/getChallenges";
+import {getUsers} from "@/gateway/Users/getUsers";
+import {addDonuts} from "@/gateway/Users/putUsers";
+import {Challenge, User} from "@/types/types";
+import {CheckCircle} from "lucide-react";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 
 import {
   Dialog,
@@ -15,7 +15,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
+import {Button} from "@/components/ui/button";
 
 const dates = [
   {
@@ -218,7 +218,7 @@ export default function Page() {
                   <div className="flex flex-col gap-[4px] flex-1 items-center">
                     <div className="flex items-center gap-2 ">
                       <Image
-                        src="/donut.png"
+                        src="/donut.svg"
                         alt="donuts"
                         width={15}
                         height={15}

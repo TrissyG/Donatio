@@ -1,12 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
+import {Button} from "@/components/ui/button";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { getUsers } from "@/gateway/Users/getUsers";
-import { User } from "@/types/types";
-import { PlusSquare } from "lucide-react";
+import {useEffect, useState} from "react";
+import {getUsers} from "@/gateway/Users/getUsers";
+import {User} from "@/types/types";
+import {PlusSquare} from "lucide-react";
 
 interface StatusBarProps {}
 
@@ -36,7 +36,7 @@ const StatusBar = ({}: StatusBarProps) => {
       <div className="flex items-center justify-between rounded-xl">
         <div className="flex items-center gap-2 px-4 font-semibold">
           <Image
-            src="/donut.png"
+            src="/donut.svg"
             alt="logo"
             width={20}
             height={20}
@@ -48,10 +48,10 @@ const StatusBar = ({}: StatusBarProps) => {
         <Link href={"/create"}>
           <Button
             onClick={() => onCreate}
-            className="text-black flex flex-row gap-2 cursor-pointer px-4 py-2 bg-donatio-green rounded-full shadow-md font-bold"
+            className="text-white flex flex-row gap-2 cursor-pointer px-4 py-2 bg-donatio-green rounded-full shadow-md font-bold"
           >
-            <p>Create</p>
-            <PlusSquare size={20} />
+            <p className="tracking-wider">CREATE</p>
+            <PlusSquare size={20} className="text-white" />
           </Button>
         </Link>
       </div>
