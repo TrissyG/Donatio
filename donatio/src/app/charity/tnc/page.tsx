@@ -45,10 +45,13 @@ export default function page() {
       </div>
 
       <div className="flex justify-between items-center ">
-        <Button className="rounded-full">
-          <ChevronLeft className="mr-2 h-4 w-4" />
-          Back
-        </Button>
+        <Link href="/explore">
+          <Button className="rounded-full">
+            <ChevronLeft className="mr-2 h-4 w-4" />
+            Back
+          </Button>
+        </Link>
+
         <Link href="/donate">
           <Button className="my-6 rounded-full px-6 bg-donatio-green self-end mr-4">
             Donate <ChevronRight className="ml-2 h-4 w-4" />

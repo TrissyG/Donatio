@@ -16,7 +16,7 @@ export default function page() {
         <Button className="text-lg w-[300px] h-[45px] rounded-full bg-donatio-black">
           Donate with Donuts{" "}
           <Image
-            src="/donut.png"
+            src="/donut.svg"
             alt="logo"
             width={20}
             height={20}
