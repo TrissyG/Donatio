@@ -43,7 +43,7 @@ export default function Home() {
 
         setTimeout(() => {
           setShowButton(true);
-        }, 2000);
+        }, 7000);
       }, 1000);
     }
   };
@@ -89,23 +89,23 @@ export default function Home() {
       name: "Wildfire Relief in Canada",
       description:
         "Severe wildfires have devastated large areas, displacing residents and destroying homes and habitats.",
-      imgSrc: "/wildfire.png",
+      imgSrc: "/wildfire.jpeg",
     },
     {
       name: "Hunger Crisis in the Horn of Africa",
       description:
         "Prolonged drought and conflict have led to severe food shortages in countries like Somalia, Ethiopia, and Kenya.",
-      imgSrc: "/hunger.png",
+      imgSrc: "/hunger.jpg",
     },
   ];
 
   return (
     <main className="flex-1">
       {pageLoad && (
-        <div className="flex justify-center items-center gap-8 flex-col mt-24">
+        <div className="flex justify-center items-center gap-8 flex-col mt-60">
           <AnimatedStandingHoratio scale={2.5} />
           <p className="text-2xl font-semibold flex gap-2">
-            Hotario is loading the <br />
+            Horatio is loading the <br />
             page... <Loader2 className="w-6 h-6 animate-spin" />
           </p>
         </div>
@@ -256,7 +256,7 @@ export default function Home() {
               >
                 <div>
                   <Image
-                    src="/piermanuele-sberni-m9dyZivCp2A-unsplash.jpg"
+                    src={cause.imgSrc}
                     alt={cause.imgSrc}
                     width={85}
                     height={100}

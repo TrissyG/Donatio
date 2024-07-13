@@ -3,7 +3,7 @@ import axios from "axios";
 export default async function generateImage(image: Blob, prompt: string) {
   const payload = {
     image: image,
-    prompt: prompt,
+    prompt: prompt + " digital art",
     output_format: "jpeg",
     control_strength: 0.7,
     mode: "image-to-image",

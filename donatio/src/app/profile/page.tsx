@@ -20,10 +20,15 @@ export default function Page() {
   useEffect(() => {
     const getPost = async () => {
       const post = await getPosts();
-      setPosts(post!);
+      const filteredPosts = post!.filter(
+        (posts) =>
+          posts.user_image ===
+          "https://firebasestorage.googleapis.com/v0/b/donatio-6b3f9.appspot.com/o/avatar.png?alt=media&token=2e910e53-73c4-406b-b1ab-ed70f7317b29"
+      );
+      setPosts(filteredPosts);
     };
     getPost();
-  }, []);
+  }, [posts]);
 
     return (
       <div className="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0">
