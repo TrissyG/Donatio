@@ -3,10 +3,12 @@ import axios from "axios";
 export default async function generateImage(image: Blob, prompt: string) {
   const payload = {
     image: image,
-    prompt: prompt,
+    prompt: prompt + "brightness",
     output_format: "jpeg",
     strength: 0.75,
     mode: "image-to-image",
+    model: "sd3-medium",
+    negative_prompt: "black background, grayscale",
   };
 
   const response = await axios.postForm(
