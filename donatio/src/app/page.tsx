@@ -6,6 +6,8 @@ import Navbar from "./_components/navigation/Navbar";
 export default function Home() {
   const [isForYouSelected, setIsForYouSelected] = useState(true);
 
+  const [forYou, setForYou] = useState(true);
+
   const handleForYouClick = () => {
     setIsForYouSelected(true);
   };
@@ -37,6 +39,10 @@ export default function Home() {
         >
           Explore
         </PillButton>
+      </div>
+
+      <div className="px-8 mt-8 max-h-[600px] overflow-y-auto">
+        {forYou ? <div>for you</div> : <div>explore</div>}
       </div>
     </main>
   );
