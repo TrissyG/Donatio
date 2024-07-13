@@ -20,9 +20,5 @@ dotenv.config();
   }
 })();
 
-export const {
-  ENVIRONMENT,
-  DATABASE_URL,
-  STRIPE_SECRET_KEY,
-  STRIPE_WEBHOOK_SECRET,
-} = process.env;
+export const { ENVIRONMENT, STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET } =
+  process.env;
