@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
 import PillButton from "./_components/ui/PillButton";
-import Navbar from "./_components/Navbar";
 import { getEmily } from "@/gateway/getEmily";
+import Navbar from "./_components/navigation/Navbar";
 
 export default function Home() {
   const [isForYouSelected, setIsForYouSelected] = useState(true);
