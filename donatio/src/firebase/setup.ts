@@ -3,12 +3,12 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDL4N9Fmo3Seoh8OuFbDJx_ZHZSIj9Fd2A",
-  authDomain: "donatio-cd439.firebaseapp.com",
-  projectId: "donatio-cd439",
-  storageBucket: "donatio-cd439.appspot.com",
-  messagingSenderId: "857205993901",
-  appId: "1:857205993901:web:6c1cf3af0ecae2cb5a3124",
+  apiKey: "AIzaSyCGQ-kLsDZz3kFIm40wWfPsfxKfe5IrGhA",
+  authDomain: "donatio-deba9.firebaseapp.com",
+  projectId: "donatio-deba9",
+  storageBucket: "donatio-deba9.appspot.com",
+  messagingSenderId: "219121714489",
+  appId: "1:219121714489:web:eb7f88668128b7cb2c14e8",
 };
 
 const app = initializeApp(firebaseConfig);
