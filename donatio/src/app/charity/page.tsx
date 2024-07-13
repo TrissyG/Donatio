@@ -25,13 +25,29 @@ export default function page() {
     },
   ];
 
+  const causeTabs = ["All", "Climate Change", "Poverty", "Poor Education"];
+
   return (
     <div className="mx-6">
       <h1 className="text-2xl font-semibold mb-6 text-center">
         Explore Charities
       </h1>
 
-      <div className="flex justiy-center items-center flex-col gap-6 text-center max-h-[700px] overflow-y-auto no-scrollbar ">
+      <div
+        className={`flex gap-4 items-center pl-4 overflow-x-hidden mt-6 mb-4`}
+      >
+        {causeTabs.map((cause, index) => (
+          <div
+            key={index}
+            className={`${
+              cause == "All" ? "px-6  bg-opacity-40" : "px-3 bg-opacity-0"
+            } py-2 cursor-pointer transition-all duration-300 hover:bg-opacity-20 bg-donatio-green rounded-full border-2 border-opacity-70 border-donatio-green text-nowrap`}
+          >
+            {cause}
+          </div>
+        ))}
+      </div>
+      <div className="flex justiy-center items-center flex-col gap-6 text-center max-h-[570px] overflow-y-auto no-scrollbar ">
         {charities.map((charity, index) => (
           <div
             key={index}
