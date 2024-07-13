@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { getUsers } from "@/gateway/Users/getUsers";
 import { User } from "@/types/types";
+import { PlusSquare } from "lucide-react";
 
 interface StatusBarProps {}
 
@@ -50,7 +51,7 @@ const StatusBar = ({}: StatusBarProps) => {
             className="text-black flex flex-row gap-2 cursor-pointer px-4 py-2 bg-donatio-green rounded-full shadow-md font-bold"
           >
             <p>Create</p>
-            <Image src={"/challenge.svg"} alt="next" width={20} height={20} />
+            <PlusSquare size={20} />
           </Button>
         </Link>
       </div>

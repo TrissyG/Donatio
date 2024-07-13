@@ -25,3 +25,8 @@ export interface Challenge {
   title: string;
   isClaimed: boolean;
 }
+
+export interface Message {
+  text: string;
+  sender: "user" | "horatio";
+}

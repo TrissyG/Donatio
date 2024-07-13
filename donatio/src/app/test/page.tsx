@@ -35,7 +35,7 @@ const CreatePostComponent: React.FC = () => {
       console.error("No file selected");
     }
   };
-
+  console.log("trigger deploy");
   return (
     <div>
       <input
