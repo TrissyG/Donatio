@@ -29,7 +29,7 @@ const StatusBar = ({}: StatusBarProps) => {
     getUser();
   }, []);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div></div>;
 
   return (
     <nav className="my-4 px-6">
