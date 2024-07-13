@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 export default function page() {
@@ -43,10 +44,16 @@ export default function page() {
         </ol>
       </div>
 
-      <div className="flex justify-end">
-        <Button className="my-6 rounded-full px-6 bg-donatio-green self-end mr-4">
-          Donate <ChevronRight className="ml-2 h-4 w-4" />
+      <div className="flex justify-between items-center ">
+        <Button className="rounded-full">
+          <ChevronLeft className="mr-2 h-4 w-4" />
+          Back
         </Button>
+        <Link href="/donate">
+          <Button className="my-6 rounded-full px-6 bg-donatio-green self-end mr-4">
+            Donate <ChevronRight className="ml-2 h-4 w-4" />
+          </Button>
+        </Link>
       </div>
     </div>
   );
