@@ -23,4 +23,5 @@ export interface Challenge {
   icon: string;
   isCompleted: boolean;
   title: string;
+  isClaimed: boolean;
 }
