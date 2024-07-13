@@ -3,16 +3,33 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { getUsers } from "@/gateway/Users/getUsers";
+import { User } from "@/types/types";
 
 interface StatusBarProps {}
 
 const StatusBar = ({}: StatusBarProps) => {
   const onCreate = () => {};
+  const [user, setUser] = useState<User[]>([]);
+
+  useEffect(() => {
+    const getUser = async () => {
+      try {
+        const users = await getUsers();
+        setUser(users!);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getUser();
+  }, []);
 
   return (
     <nav className="my-4 px-10">
       <div className="flex items-center justify-between rounded-xl">
-        <div>Streak</div>
+        <div>Donut {user[0].donuts}</div>
         <div>Logo</div>
         <Link href={"/create"}>
           <Button

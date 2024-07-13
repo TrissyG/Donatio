@@ -148,77 +148,96 @@ export default function page() {
       <div className="flex flex-col gap-2">
         {challenges?.map((challenge) => {
           return (
-            <div
-              key={challenge.title}
-              className={`${
-                challenge.donut == 80 ? "bg-opacity-50" : " bg-opacity-15"
-              } bg-donatio-green flex items-center justify-between mx-4 px-2 rounded-2xl h-[80px] shadow-lg`}
-            >
-              <div className="flex items-center gap-2">
-                <Image
-                  src="/challenge-dark.svg"
-                  alt="challenge"
-                  width={28}
-                  height={28}
-                />
-                <div className="flex justify-between items-center px-8 py-2">
-                  <div>
-                    <p className=" font-bold">{challenge.title}</p>
-                    <p className="text-[12px] font-normal">
-                      {challenge.description}
-                    </p>
+            <>
+              {challenge.isClaimed ? (
+                <div
+                  key={challenge.title}
+                  className={`${
+                    challenge.donut == 80 ? "bg-opacity-50" : " bg-opacity-15"
+                  } bg-donatio-green flex items-center justify-between mx-4 px-2 rounded-2xl h-[80px] shadow-lg opacity-30 relative`}
+                >
+                  <p className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-donatio-black text-opacity-70 text-xl italic">
+                    Claimed
+                  </p>
+                </div>
+              ) : (
+                <div
+                  key={challenge.title}
+                  className={`${
+                    challenge.donut == 80 ? "bg-opacity-50" : " bg-opacity-15"
+                  } bg-donatio-green flex items-center justify-between mx-4 px-2 rounded-2xl h-[80px] shadow-lg`}
+                >
+                  <div className="flex items-center gap-2">
+                    <Image
+                      src="/challenge-dark.svg"
+                      alt="challenge"
+                      width={28}
+                      height={28}
+                    />
+                    <div className="flex justify-between items-center px-8 py-2">
+                      <div>
+                        <p className=" font-bold">{challenge.title}</p>
+                        <p className="text-[12px] font-normal">
+                          {challenge.description}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-[2px] flex-1">
+                    <div className="flex items-center gap-2">
+                      <Image
+                        src="/challenge-dark.svg"
+                        alt="challenge"
+                        width={20}
+                        height={20}
+                      />
+                      <p>{challenge.donut}</p>
+                    </div>
+                    {challenge.isCompleted ? (
+                      <Dialog>
+                        <DialogTrigger asChild>
+                          <Button
+                            onClick={() =>
+                              onClaim(
+                                challenge.donut,
+                                user[0].donuts,
+                                user[0].donuts_earned
+                              )
+                            }
+                            className="px-2 py-1 border-2 border-donatio-green bg-donatio-green flex-shrink-0 w-[50px] rounded-full flex justify-center cursor-pointer transition-all duration-300 hover:opacity-70"
+                          >
+                            <CheckCircle size={24} />
+                          </Button>
+                        </DialogTrigger>
+                        <DialogContent>
+                          <DialogHeader>
+                            <DialogTitle className="text-center">
+                              Donuts Earned!
+                            </DialogTitle>
+                            <DialogDescription>
+                              <div className="flex flex-col gap-4">
+                                <div className="h-[300px] shadow-md grid place-items-center">
+                                  Mascot
+                                </div>
+                                <p>
+                                  You have earned{" "}
+                                  <strong>{challenge.donut}</strong> donuts.
+                                </p>
+                                <Button onClick={close}>Close</Button>
+                              </div>
+                            </DialogDescription>
+                          </DialogHeader>
+                        </DialogContent>
+                      </Dialog>
+                    ) : (
+                      <div className="px-2 py-1 border-2 border-donatio-green flex-shrink-0 w-[50px] rounded-full">
+                        <p className="text-sm font-bold">0 / 1</p>
+                      </div>
+                    )}
                   </div>
                 </div>
-              </div>
-              <div className="flex flex-col gap-[2px] flex-1">
-                <div className="flex items-center gap-2">
-                  <Image
-                    src="/challenge-dark.svg"
-                    alt="challenge"
-                    width={20}
-                    height={20}
-                  />
-                  <p>{challenge.donut}</p>
-                </div>
-                {challenge.isCompleted ? (
-                  <Dialog>
-                    <DialogTrigger asChild>
-                      <Button className="px-2 py-1 border-2 border-donatio-green bg-donatio-green flex-shrink-0 w-[50px] rounded-full flex justify-center cursor-pointer transition-all duration-300 hover:opacity-70">
-                        <CheckCircle size={24} />
-                      </Button>
-                    </DialogTrigger>
-                    <DialogContent>
-                      <DialogHeader>
-                        <DialogTitle>Are you absolutely sure?</DialogTitle>
-                        <DialogDescription>
-                          <>
-                            <p>
-                              You have earned <strong>{challenge.donut}</strong>{" "}
-                              donuts. Are you sure you want to claim them?
-                            </p>
-                            <Button
-                              onClick={() =>
-                                onClaim(
-                                  challenge.donut,
-                                  user[0].donuts,
-                                  user[0].donuts_earned
-                                )
-                              }
-                            >
-                              Close
-                            </Button>
-                          </>
-                        </DialogDescription>
-                      </DialogHeader>
-                    </DialogContent>
-                  </Dialog>
-                ) : (
-                  <div className="px-2 py-1 border-2 border-donatio-green flex-shrink-0 w-[50px] rounded-full">
-                    <p className="text-sm font-bold">0 / 1</p>
-                  </div>
-                )}
-              </div>
-            </div>
+              )}
+            </>
           );
         })}
       </div>
