@@ -1,6 +1,7 @@
 "use client";
 import { getChallenges } from "@/gateway/Challenges/getChallenges";
 import { Challenge } from "@/types/types";
+import { CheckCircle } from "lucide-react";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
@@ -180,8 +181,8 @@ export default function page() {
                   <p>{challenge.donut}</p>
                 </div>
                 {challenge.isCompleted ? (
-                  <div className="px-2 py-1 border-2 border-donatio-green bg-donatio-green flex-shrink-0 w-[50px] rounded-full">
-                    claim
+                  <div className="px-2 py-1 border-2 border-donatio-green bg-donatio-green flex-shrink-0 w-[50px] rounded-full flex justify-center">
+                    <CheckCircle size={24} />
                   </div>
                 ) : (
                   <div className="px-2 py-1 border-2 border-donatio-green flex-shrink-0 w-[50px] rounded-full">
