@@ -81,12 +81,12 @@ export default function Home() {
           <div key={index}>
             <p>Causes:</p>
             <ul>
-              {user.causes.map((cause, causeIndex) => (
+              {user.causes?.map((cause, causeIndex) => (
                 <li key={causeIndex}>{cause}</li>
               ))}
             </ul>
-            <p>Donut Balance: {user.donut_balance}</p>
-            <p>Donut Earned: {user.donut_earned}</p>
+            <p>Donut Balance: {user.donuts}</p>
+            <p>Donut Earned: {user.donuts_earned}</p>
             <p>Donut Given: {user.donut_given}</p>
           </div>
         ))}

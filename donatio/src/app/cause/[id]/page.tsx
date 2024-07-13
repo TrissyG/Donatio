@@ -25,16 +25,6 @@ export default function Page() {
       <div className="border-b-[1px] border-opacity-20 border-black mt-6" />
 
       <div className="pt-2 max-h-[505px] overflow-y-auto no-scrollbar">
-        {forYouArray.map((post, index) => (
-          <Card
-            key={index}
-            imgSrc={post.imgSrc}
-            caption={post.caption}
-            username={post.username}
-            timePosted={post.timePosted}
-            likes={post.likes}
-          />
-        ))}
       </div>
     </div>
   );
