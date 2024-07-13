@@ -76,11 +76,15 @@ export default function Home() {
           ? forYouArray.map((post, index) => <Card key={index} {...post} />)
           : exploreArray.map((post, index) => <Card key={index} {...post} />)}
       </div>
-
       <div>
         {users?.map((user, index) => (
           <div key={index}>
-            <p>Causes: {user.causes}</p>
+            <p>Causes:</p>
+            <ul>
+              {user.causes.map((cause, causeIndex) => (
+                <li key={causeIndex}>{cause}</li>
+              ))}
+            </ul>
             <p>Donut Balance: {user.donut_balance}</p>
             <p>Donut Earned: {user.donut_earned}</p>
             <p>Donut Given: {user.donut_given}</p>
