@@ -28,7 +28,7 @@ export default function Page() {
       setPosts(filteredPosts);
     };
     getPost();
-  }, [posts]);
+  }, []);
 
     return (
       <div className="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0">
