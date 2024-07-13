@@ -4,6 +4,8 @@ import PillButton from "./_components/ui/PillButton";
 import Card from "./_components/posts/Card";
 import { User } from "@/types/types";
 import { getUsers } from "@/gateway/Users/getUsers";
+import { Divide } from "lucide-react";
+import { AnimatedStandingHoratio } from "./_components/animation/AnimatedStandingHoratio";
 
 export default function Home() {
   const [isForYouSelected, setIsForYouSelected] = useState(true);
@@ -45,7 +47,8 @@ export default function Home() {
     post,
     post,
   ];
-  const exploreArray = [post, post, post];
+
+  const causeTabs = ["Climate Change", "Poverty", "Poor Education"];
 
   return (
     <main className="flex-1">
@@ -72,9 +75,35 @@ export default function Home() {
         </PillButton>
       </div>
       <div className=" max-h-[650px] overflow-y-auto no-scrollbar">
-        {isForYouSelected
-          ? forYouArray.map((post, index) => <Card key={index} {...post} />)
-          : exploreArray.map((post, index) => <Card key={index} {...post} />)}
+        {isForYouSelected ? (
+          forYouArray.map((post, index) => <Card key={index} {...post} />)
+        ) : (
+          <div className="px-6 mt-2">
+            <h1 className="text-2xl font-semibold mb-3 text-center">
+              Horatio AI
+            </h1>
+            <div className="flex gap-6">
+              <AnimatedStandingHoratio />
+              <div className="w-[260px] bg-white h-[300px] shadow-lg rounded-xl relative">
+                <div className="absolute bottom-2 right-[5px]">
+                  <input
+                    className="w-[234px] h-[40px] border-2 border-donatio-green rounded-full px-4"
+                    type="text"
+                    placeholder="hello"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        <div>
+          {causeTabs.map((cause, index) => (
+            <div key={index} className="flex gap-2 items-center">
+              <p>{cause}</p>
+            </div>
+          ))}
+        </div>
       </div>
       {/* <div>
         {users?.map((user, index) => (
