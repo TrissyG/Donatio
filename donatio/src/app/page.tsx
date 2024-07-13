@@ -23,7 +23,7 @@ export default function Home() {
       setUsers(users);
     };
     getUser();
-  });
+  }, []);
 
   const post = {
     imgSrc: "/piermanuele-sberni-m9dyZivCp2A-unsplash.jpg",
@@ -49,7 +49,7 @@ export default function Home() {
 
   return (
     <main className="flex-1">
-      <div className="flex justify-center items-center gap-16">
+      <div className="flex justify-center items-center gap-16 border-b-[1px] border-opacity-20 border-black pb-6">
         <PillButton
           className={`px-6 py-2 drop-shadow-lg ${
             isForYouSelected
@@ -71,26 +71,26 @@ export default function Home() {
           Explore
         </PillButton>
       </div>
-      <div className="pt-8 max-h-[625px] overflow-y-auto no-scrollbar">
+      <div className=" max-h-[650px] overflow-y-auto no-scrollbar">
         {isForYouSelected
           ? forYouArray.map((post, index) => <Card key={index} {...post} />)
           : exploreArray.map((post, index) => <Card key={index} {...post} />)}
       </div>
-      <div>
+      {/* <div>
         {users?.map((user, index) => (
           <div key={index}>
             <p>Causes:</p>
             <ul>
-              {user.causes.map((cause, causeIndex) => (
+              {user.causes?.map((cause, causeIndex) => (
                 <li key={causeIndex}>{cause}</li>
               ))}
             </ul>
-            <p>Donut Balance: {user.donut_balance}</p>
-            <p>Donut Earned: {user.donut_earned}</p>
+            <p>Donut Balance: {user.donuts}</p>
+            <p>Donut Earned: {user.donuts_earned}</p>
             <p>Donut Given: {user.donut_given}</p>
           </div>
         ))}
-      </div>
+      </div> */}
     </main>
   );
 }

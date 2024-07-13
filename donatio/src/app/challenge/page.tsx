@@ -232,7 +232,7 @@ export default function Page() {
                             onClick={() =>
                               onClaim(
                                 challenge.donut,
-                                user[0].,
+                                user[0].donuts,
                                 user[0].donuts_earned
                               )
                             }
