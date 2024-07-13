@@ -14,12 +14,12 @@ export default function Page() {
     e.preventDefault();
     try {
       setLoading(true);
-      // await completeChallenge("1");
+      await completeChallenge("1");
       setTimeout(() => {
         setLoading(false);
       }, 1000);
 
-      // router.push("http://localhost:3000/");
+      router.push("http://localhost:3000/");
     } catch (error) {
       console.log(error);
     }
