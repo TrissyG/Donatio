@@ -28,7 +28,8 @@ function Page() {
     likes: 0,
     reposts: 0,
     time: new Date().toISOString(),
-    user_image: "",
+    user_image:
+      "https://firebasestorage.googleapis.com/v0/b/donatio-6b3f9.appspot.com/o/avatar.png?alt=media&token=2e910e53-73c4-406b-b1ab-ed70f7317b29",
     username: "",
   });
 
