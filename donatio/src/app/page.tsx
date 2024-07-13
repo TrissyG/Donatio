@@ -1,11 +1,14 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PillButton from "./_components/ui/PillButton";
-import Navbar from "./_components/Navbar";
+
 import Card from "./_components/posts/Card";
+import { getEmily } from "@/gateway/getEmily";
+
 
 export default function Home() {
   const [isForYouSelected, setIsForYouSelected] = useState(true);
+  const [emily, setEmily] = useState("");
 
   const handleForYouClick = () => {
     setIsForYouSelected(true);
@@ -14,6 +17,14 @@ export default function Home() {
   const handleExploreClick = () => {
     setIsForYouSelected(false);
   };
+
+  useEffect(() => {
+    const getUser = async () => {
+      const emily = await getEmily();
+      setEmily(emily);
+    };
+    getUser();
+  });
 
   return (
     <main className="flex-1">
@@ -46,6 +57,7 @@ export default function Home() {
         timePosted={"27"}
         likes={26.4}
       />
+      <div>{emily}</div>
     </main>
   );
 }
