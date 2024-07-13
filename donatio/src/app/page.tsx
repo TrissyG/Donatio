@@ -26,24 +26,41 @@ export default function Home() {
   }, []);
 
   const post = {
+    imgSrc: "/mohammad-minhaz-uDG2-d4oUn8-unsplash.jpg",
+    theme: "Climate change",
+    caption:
+      "drip drip rain drip weee treeees treeeestreeees treeeestreeeestreeees",
+    likes: 2.4,
+    avatarSrc: "/author.png",
+  };
+  const post2 = {
     imgSrc: "/piermanuele-sberni-m9dyZivCp2A-unsplash.jpg",
-    caption: "Lorem ipsum Lorem ipsum Lorem ipsum",
-    username: "regular_donor24",
-    timePosted: "27",
+    caption:
+      "swoosh goes the volcano swoosh goes the volcano swoosh goes the volcano swoosh goes the volcano swoosh goes the volcano swoosh goes the volcano swoosh goes the volcano swoosh goes the volcano ",
+    theme: "Volcanoes",
     likes: 26.4,
+    avatarSrc: "/author.png",
   };
 
   const forYouArray = [
     post,
+    post2,
     post,
+    post2,
     post,
+    post2,
     post,
+    post2,
     post,
-    post,
-    post,
-    post,
-    post,
-    post,
+    post2,
+    // post,
+    // post,
+    // post,
+    // post,
+    // post,
+    // post,
+    // post,
+    // post,
   ];
   const exploreArray = [post, post, post];
 
