@@ -33,6 +33,8 @@ const Canvas = forwardRef<HTMLCanvasElement, CanvasProps>(
         const ctx = canvasRef.current.getContext("2d");
         if (ctx) {
           ctx.lineWidth = 1.5;
+          ctx.fillStyle = "white";
+          ctx.fillRect(0, 0, canvasRef.current.width, canvasRef.current.height);
           setContext(ctx);
           handleSize();
         }

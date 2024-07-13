@@ -36,7 +36,7 @@ const StatusBar = ({}: StatusBarProps) => {
       <div className="flex items-center justify-between rounded-xl">
         <div className="flex items-center gap-2 px-4 font-semibold">
           <Image
-            src="/donut.png"
+            src="/donut.svg"
             alt="logo"
             width={20}
             height={20}

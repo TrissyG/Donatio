@@ -36,10 +36,6 @@ const CreatePostComponent: React.FC = () => {
     }
   };
 
-  const handleDonate = async () => {
-    console.log("Donated");
-  };
-
   return (
     <div>
       <input
@@ -68,7 +64,6 @@ const CreatePostComponent: React.FC = () => {
       />
       <input type="file" onChange={handleFileChange} />
       <button onClick={handleUpload}>Create Post</button>
-      <button onClick={handleDonate}>Donate</button>
     </div>
   );
 };

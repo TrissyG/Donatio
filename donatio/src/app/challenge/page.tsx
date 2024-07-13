@@ -218,7 +218,7 @@ export default function Page() {
                   <div className="flex flex-col gap-[4px] flex-1 items-center">
                     <div className="flex items-center gap-2 ">
                       <Image
-                        src="/donut.png"
+                        src="/donut.svg"
                         alt="donuts"
                         width={15}
                         height={15}

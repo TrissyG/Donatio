@@ -8,10 +8,10 @@ import Canvas from "../_components/Canvas";
 import generateImage from "@/gateway/Images/generateImage";
 import { postImage } from "@/gateway/Images/postImage";
 import Image from "next/image";
+import { AnimatedArtistHoratio } from "../_components/animation/artistHoratio/AnimatedArtistHoratio";
 
 export default function Page() {
-  const [loading, setLoading] = useState(false);
-  // const [canvasImage, setCanvasImage] = useState<Blob | null>(null);
+  const [loading, setLoading] = useState(true);
   const [prompt, setPrompt] = useState<string>("");
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const router = useRouter();
@@ -22,33 +22,23 @@ export default function Page() {
     setPrompt(event.target.value);
   };
 
-  // const getCanvasImage = () => {
-  //   if (canvasRef.current) {
-  //     canvasRef.current.toBlob((blob) => {
-  //       if (blob) {
-  //         setCanvasImage(blob);
-  //       }
-  //     });
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   getCanvasImage();
-  // }, []);
-
   const onGenerate = async () => {
-    setLoading(true);
-    // canvasRef.current?.toBlob(async (blob) => {
-    //   if (blob) {
-    //     const generatedImage = await generateImage(blob, prompt);
-    //     const imageUrl = await postImage(generatedImage);
-    //   }
-    // });
+    canvasRef.current?.toBlob(async (blob) => {
+      if (blob) {
+        try {
+          setLoading(false);
+          const generatedImage = await generateImage(blob, prompt);
+          const imageUrl = await postImage(generatedImage);
 
-    setTimeout(() => {
-      setLoading(false);
-      router.push("http://localhost:3000/create/preview");
-    }, 3000);
+          router.push(
+            `/create/preview/?imageUrl=${encodeURIComponent(imageUrl)}`
+          );
+        } catch (error) {
+          console.error("Error generating or uploading image:", error);
+          setLoading(false);
+        }
+      }
+    });
   };
 
   return (
@@ -56,12 +46,7 @@ export default function Page() {
       {loading ? (
         <div>
           <div className="mx-8 grid place-items-center mt-12 h-[400px]">
-            <Image
-              src="/mascot4.svg"
-              alt="mascot-cooking"
-              width={320}
-              height={400}
-            />
+            <AnimatedArtistHoratio scale={2.2} />
           </div>
           <div className="text-xl font-semibold">
             <p className="mx-8 mt-4 text-lg flex items-center gap-4">
@@ -71,7 +56,7 @@ export default function Page() {
         </div>
       ) : (
         <div>
-          <h2 className="text-xl font-bold text-center mb-6 mt-2 text-donatio-green">
+          <h2 className="text-2xl font-bold text-center mb-6 mt-2 text-donatio-green">
             Generate a Post
           </h2>
           <h3 className="text-lg mx-8 font-bold mt-2 mb-4">Draw anything</h3>
