@@ -5,14 +5,9 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
 export async function createPost(
   newPost: Omit<Post, "image">,
-  imageFile: File
+  imageUrl: String
 ) {
   try {
-    const storageRef = ref(storage, `posts/${imageFile.name}`);
-
-    const snapshot = await uploadBytes(storageRef, imageFile);
-    const imageUrl = await getDownloadURL(snapshot.ref);
-
     const postWithImage = { ...newPost, image: imageUrl };
 
     const postsCollection = collection(db, "posts");
