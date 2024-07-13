@@ -2,26 +2,52 @@
 
 import { Button } from "@/components/ui/button";
 import { Expand } from "lucide-react";
-import { redirect } from "next/navigation";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
-
-interface createPageProps {}
+import React, { useRef, useState } from "react";
+import Canvas from "../_components/Canvas";
+import generateImage from "@/gateway/Images/generateImage";
+import { postImage } from "@/gateway/Images/postImage";
 
 export default function Page() {
   const [loading, setLoading] = useState(false);
-
+  // const [canvasImage, setCanvasImage] = useState<Blob | null>(null);
+  const [prompt, setPrompt] = useState<string>("");
+  const canvasRef = useRef<HTMLCanvasElement>(null);
   const router = useRouter();
 
-  const onGenerate = () => {
-    setLoading(true);
+  const handlePromptChange = (
+    event: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
+    setPrompt(event.target.value);
+  };
 
-    try {
-      setTimeout(() => {
-        setLoading(false);
-        router.push("http://localhost:3000/create/preview");
-      }, 3000);
-    } catch (error) {}
+  // const getCanvasImage = () => {
+  //   if (canvasRef.current) {
+  //     canvasRef.current.toBlob((blob) => {
+  //       if (blob) {
+  //         setCanvasImage(blob);
+  //       }
+  //     });
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   getCanvasImage();
+  // }, []);
+
+  const onGenerate = async () => {
+    setLoading(true);
+    canvasRef.current?.toBlob(async (blob) => {
+      if (blob) {
+        const generatedImage = await generateImage(blob, prompt);
+        const imageUrl = await postImage(generatedImage);
+      }
+    });
+
+    setTimeout(() => {
+      setLoading(false);
+      router.push("http://localhost:3000/create/preview");
+    }, 3000);
   };
 
   return (
@@ -39,11 +65,12 @@ export default function Page() {
             Generate a Post
           </h2>
           <h3 className="text-lg mx-8 font-bold mt-2 mb-4">Draw anything</h3>
+
           <div
             id="canvas"
-            className="mx-8 h-[300px] shadow-md bg-white grid place-items-center rounded-lg mb-6 relative"
+            className="mx-8 h-[300px] shadow-md place-items-center rounded-lg mb-6 relative"
           >
-            <p>Canvas</p>
+            <Canvas ref={canvasRef} />
             <Expand
               className="absolute top-4 right-4 cursor-pointer transition-all duration-250 hover:text-donatio-green"
               size={20}
@@ -55,6 +82,8 @@ export default function Page() {
             </label>
             <textarea
               className="w-[350px] p-4 rounded-lg shadow-md border-2 border-donatio-green"
+              onChange={handlePromptChange}
+              value={prompt}
               rows={4}
             ></textarea>
           </form>

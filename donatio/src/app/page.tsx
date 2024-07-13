@@ -23,7 +23,6 @@ export default function Home() {
       setUsers(users);
     };
     getUser();
-    console.log("called getUsers in home page!");
   }, []);
 
   const post = {

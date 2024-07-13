@@ -26,7 +26,9 @@ export default function Page() {
     <div>
       <div className="flex justify-center mt-8">
         <Image
-          src={"/piermanuele-sberni-m9dyZivCp2A-unsplash.jpg"}
+          src={
+            "https://firebasestorage.googleapis.com/v0/b/donatio-deba9.appspot.com/o/posts%2F3vlh9Qthjo2epdtWdv9A?alt=media&token=b2b4efd3-abea-451a-a96e-18431807be94"
+          }
           alt="image1"
           width={350}
           height={520}
