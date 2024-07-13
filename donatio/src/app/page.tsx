@@ -39,7 +39,13 @@ export default function Home() {
           Explore
         </PillButton>
       </div>
-      <Card imgSrc={"/piermanuele-sberni-m9dyZivCp2A-unsplash.jpg"} />
+      <Card
+        imgSrc={"/piermanuele-sberni-m9dyZivCp2A-unsplash.jpg"}
+        caption={"Lorem ipsum Lorem ipsum Lorem ipsum"}
+        username={"regular_donor24"}
+        timePosted={"27"}
+        likes={26.4}
+      />
     </main>
   );
 }
