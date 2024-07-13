@@ -1,8 +1,8 @@
 import type {Metadata} from "next";
-import {Montserrat} from "next/font/google";
 import "./globals.css";
 import Navbar from "./_components/navigation/Navbar";
 import StatusBar from "./_components/navigation/StatusBar";
+import {Montserrat} from "next/font/google";
 
 const fredoka = Montserrat({ subsets: ["latin"] });
 

@@ -38,7 +38,7 @@ const Card = ({ imgSrc, likes, caption, theme, avatarSrc }: CardProps) => {
         alt={caption}
         className="rounded-lg m-4 w-full h-full"
       />
-      <div className="absolute top-8 right-4 p-2 bg-black bg-opacity-50 rounded-full cursor-pointer">
+      <div className="absolute top-8 right-4 py-2 px-4 bg-black bg-opacity-50 rounded-full cursor-pointer">
         <div className="flex items-center justify-center gap-2">
           <HeartHandshake
             className={`text-white ${isLiked ? "text-red-500" : ""}`}
@@ -48,12 +48,12 @@ const Card = ({ imgSrc, likes, caption, theme, avatarSrc }: CardProps) => {
         </div>
       </div>
       <div className="absolute top-8 ml-16 p-2 bg-black bg-opacity-50 text-white rounded-full"></div>
-      <div className="absolute top-8 left-4 p-2 bg-black bg-opacity-50 text-white rounded-full">
+      <div className="absolute top-8 left-4 py-2 px-4 bg-black bg-opacity-50 text-white rounded-full">
         <p>{theme}</p>
       </div>
       <div
         className={`absolute bottom-8 py-4 px-4 w-11/12 bg-black bg-opacity-50 text-white ${
-          isExpanded ? "rounded-lg bg-opacity-90" : "rounded-full"
+          isExpanded ? "rounded-lg bg-opacity-90" : "rounded-lg"
         }`}
       >
         <div
