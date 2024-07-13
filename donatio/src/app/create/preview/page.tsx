@@ -51,7 +51,7 @@ function Page() {
       await createPost(newPost, imageUrl);
       await completeChallenge("1");
       setLoading(false);
-      router.push("http://localhost:3000/");
+      router.push("/");
     } catch (error) {
       console.log(error);
     }
