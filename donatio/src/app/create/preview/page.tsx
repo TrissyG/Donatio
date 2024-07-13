@@ -38,7 +38,7 @@ export default function Page() {
     }
     try {
       setLoading(true);
-      await createPost(newPost, decodeURIComponent(imageUrl));
+      await createPost(newPost, imageUrl);
       setLoading(false);
       router.push("http://localhost:3000/");
     } catch (error) {
