@@ -2,42 +2,128 @@
 
 import { Button } from "@/components/ui/button";
 import { Expand } from "lucide-react";
-import { redirect } from "next/navigation";
 import { useRouter } from "next/navigation";
-import React, { useRef, useState } from "react";
-import Canvas from "../_components/Canvas";
+import React, { useEffect, useRef, useState } from "react";
 import generateImage from "@/gateway/stabilityai-api";
-
-interface createPageProps {}
 
 export default function Page() {
   const [loading, setLoading] = useState(false);
-  const [canvasImage, setCanvasImage] = useState<File>();
+  const [canvasImage, setCanvasImage] = useState<Blob | null>(null);
+  const [isDrawing, setIsDrawing] = useState(false);
+  const [start, setStart] = useState<{ x: number; y: number } | null>(null);
+  const [context, setContext] = useState<CanvasRenderingContext2D | null>(null);
+  const [offset, setOffset] = useState<{ top: number; left: number }>({
+    top: 0,
+    left: 0,
+  });
   const [prompt, setPrompt] = useState<string>("");
-  const canvasRef = useRef(null);
-
+  const color = "#000";
+  const background = "#fff";
+  const canvasRef = useRef<HTMLCanvasElement>(null);
   const router = useRouter();
-  const handlePromptChange = (event: any) => {
+
+  const handlePromptChange = (
+    event: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
     setPrompt(event.target.value);
   };
 
   const getCanvasImage = () => {
     if (canvasRef.current) {
-      return canvasRef.current.toDataURL("image/png");
+      canvasRef.current.toBlob((blob) => {
+        if (blob) {
+          setCanvasImage(blob);
+        }
+      });
     }
-    return null;
   };
 
-  const onGenerate = () => {
-    setLoading(true);
-    generateImage(canvasImage, prompt);
+  useEffect(() => {
+    getCanvasImage();
+  }, []);
 
-    try {
-      setTimeout(() => {
-        setLoading(false);
-        router.push("http://localhost:3000/create/preview");
-      }, 3000);
-    } catch (error) {}
+  const onGenerate = async () => {
+    getCanvasImage();
+    setLoading(true);
+
+    if (canvasImage) {
+      const formData = new FormData();
+      formData.append("image", canvasImage);
+      formData.append("prompt", prompt);
+
+      await generateImage(formData);
+      console.log(canvasImage);
+    }
+  };
+
+  useEffect(() => {
+    if (canvasRef.current) {
+      const ctx = canvasRef.current.getContext("2d");
+      if (ctx) {
+        ctx.lineWidth = 1.5;
+        setContext(ctx);
+        handleSize();
+      }
+    }
+
+    const handleResize = () => handleSize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [canvasRef]);
+
+  useEffect(() => {
+    if (context) {
+      context.strokeStyle = color;
+    }
+  }, [color, context]);
+
+  const handleStart = (x: number, y: number) => {
+    setIsDrawing(true);
+    setStart({ x, y });
+  };
+
+  const handleEnd = () => {
+    setIsDrawing(false);
+  };
+
+  const handleMove = (x: number, y: number) => {
+    if (!isDrawing || !start || !context) return;
+
+    context.beginPath();
+    context.moveTo(start.x, start.y);
+    context.lineTo(x, y);
+    context.closePath();
+    context.stroke();
+
+    setStart({ x, y });
+  };
+
+  const handleSize = () => {
+    if (canvasRef.current) {
+      const { top, left } = canvasRef.current.getBoundingClientRect();
+      setOffset({ top, left });
+    }
+  };
+
+  const handleMouseDown = (e: React.MouseEvent<HTMLCanvasElement>) => {
+    handleStart(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLCanvasElement>) => {
+    handleMove(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent<HTMLCanvasElement>) => {
+    const { clientX, clientY } = e.touches[0];
+    handleStart(clientX - offset.left, clientY - offset.top);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLCanvasElement>) => {
+    const { clientX, clientY } = e.touches[0];
+    handleMove(clientX - offset.left, clientY - offset.top);
   };
 
   return (
@@ -60,7 +146,20 @@ export default function Page() {
             id="canvas"
             className="mx-8 h-[300px] shadow-md place-items-center rounded-lg mb-6 relative"
           >
-            <Canvas ref={canvasRef} />
+            <canvas
+              ref={canvasRef}
+              width={350}
+              height={300}
+              className="rounded-lg"
+              onMouseDown={handleMouseDown}
+              style={{ background }}
+              onMouseUp={handleEnd}
+              onMouseLeave={handleEnd}
+              onMouseMove={handleMouseMove}
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleEnd}
+              onTouchMove={handleTouchMove}
+            />
             <Expand
               className="absolute top-4 right-4 cursor-pointer transition-all duration-250 hover:text-donatio-green"
               size={20}
