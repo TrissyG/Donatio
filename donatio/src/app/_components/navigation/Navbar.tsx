@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import SelectedIcon from "../SelectedIcon";
 import Link from "next/link";
 
@@ -54,8 +55,10 @@ export default function Navbar() {
             {icon.selected ? (
               <SelectedIcon name={icon.name} />
             ) : (
-              <img
+              <Image
                 src={icon.imageUrl}
+                width={50}
+                height={50}
                 alt={icon.name}
                 onClick={() => {
                   onIconClick(icon);

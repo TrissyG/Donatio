@@ -7,21 +7,25 @@ export default function page() {
       name: "The Nature Conservancy",
       description:
         "Protects natural habitats and promotes sustainable practices to combat climate change and support food security.",
+      imageUrl: "/nature.jpg",
     },
     {
       name: "World Food Programme",
       description:
         "Provides food assistance in emergencies and works to improve nutrition and build resilience in vulnerable communities.",
+      imageUrl: "/nature2.jpg",
     },
     {
       name: "Environmental Defense Fund",
       description:
         "Addresses climate change through science, economics, and law to create sustainable environmental solutions.",
+      imageUrl: "/nature3.jpg",
     },
     {
       name: "Action Against Hunger",
       description:
         "Fights global hunger by providing nutrition, food security, and water sanitation in crisis-affected areas.",
+      imageUrl: "/nature4.jpg",
     },
   ];
 
@@ -51,8 +55,14 @@ export default function page() {
         {charities.map((charity, index) => (
           <div
             key={index}
-            className="shadow-lg border-[2px] rounded-2xl bg-white h-[300px] py-20 flex justify-center items-center gap-2 flex-col px-6"
+            className="relative shadow-lg border-[2px] rounded-2xl  h-[300px] py-20 flex justify-center items-center gap-2 flex-col px-6"
           >
+            <img
+              src={charity.imageUrl}
+              alt={charity.imageUrl}
+              className="rounded-lg m-4 w-full h-full absolute -z-10"
+            />
+            <div className="rounded-lg m-4 w-full h-full absolute -z-[9] bg-donatio-cream bg-opacity-75" />
             <h1 className="text-2xl font-semibold mb-3">{charity.name}</h1>
             <p>{charity.description}</p>
             <Button className="mt-8 rounded-full bg-donatio-green px-10">
