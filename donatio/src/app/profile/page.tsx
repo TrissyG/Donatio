@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import Card from "../_components/posts/Card";
 
-export default function page() {
+export default function Page() {
   const post = {
     imgSrc: "/piermanuele-sberni-m9dyZivCp2A-unsplash.jpg",
     caption: "Lorem ipsum Lorem ipsum Lorem ipsum",
@@ -35,8 +35,9 @@ export default function page() {
       <div className="border-b-[1px] border-opacity-20 border-black mt-6" />
 
       <div className="pt-2 max-h-[505px] overflow-y-auto no-scrollbar">
-        {forYouArray.map((post) => (
+        {forYouArray.map((post, index) => (
           <Card
+            key={index}
             imgSrc={post.imgSrc}
             caption={post.caption}
             username={post.username}

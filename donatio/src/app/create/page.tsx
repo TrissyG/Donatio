@@ -8,7 +8,7 @@ import React, { useState } from "react";
 
 interface createPageProps {}
 
-export default function page() {
+export default function Page() {
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();

@@ -1,13 +1,13 @@
 "use client";
 import { useEffect, useState } from "react";
 import PillButton from "./_components/ui/PillButton";
-
 import Card from "./_components/posts/Card";
-import { getEmily } from "@/gateway/getEmily";
+import { User } from "@/types/types";
+import { getUsers } from "@/gateway/Users/getUsers";
 
 export default function Home() {
   const [isForYouSelected, setIsForYouSelected] = useState(true);
-  const [emily, setEmily] = useState("");
+  const [users, setUsers] = useState<User[]>();
 
   const handleForYouClick = () => {
     setIsForYouSelected(true);
@@ -19,8 +19,8 @@ export default function Home() {
 
   useEffect(() => {
     const getUser = async () => {
-      const emily = await getEmily();
-      setEmily(emily);
+      const users = await getUsers();
+      setUsers(users);
     };
     getUser();
   });
@@ -77,7 +77,16 @@ export default function Home() {
           : exploreArray.map((post, index) => <Card key={index} {...post} />)}
       </div>
 
-      <div>{emily}</div>
+      <div>
+        {users?.map((user, index) => (
+          <div key={index}>
+            <p>Causes: {user.causes}</p>
+            <p>Donut Balance: {user.donut_balance}</p>
+            <p>Donut Earned: {user.donut_earned}</p>
+            <p>Donut Given: {user.donut_given}</p>
+          </div>
+        ))}
+      </div>
     </main>
   );
 }
