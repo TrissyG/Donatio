@@ -5,6 +5,7 @@ import { Expand } from "lucide-react";
 import { redirect } from "next/navigation";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import Canvas from "../_components/Canvas";
 
 interface createPageProps {}
 
@@ -39,11 +40,12 @@ export default function page() {
             Generate a Post
           </h2>
           <h3 className="text-lg mx-8 font-bold mt-2 mb-4">Draw anything</h3>
+
           <div
             id="canvas"
-            className="mx-8 h-[300px] shadow-md bg-white grid place-items-center rounded-lg mb-6 relative"
+            className="mx-8 h-[300px] shadow-md place-items-center rounded-lg mb-6 relative"
           >
-            <p>Canvas</p>
+            <Canvas />
             <Expand
               className="absolute top-4 right-4 cursor-pointer transition-all duration-250 hover:text-donatio-green"
               size={20}
