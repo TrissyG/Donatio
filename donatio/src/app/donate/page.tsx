@@ -9,9 +9,11 @@ export default function page() {
   return (
     <div className="flex justify-center items-center mt-12 flex-col gap-10">
       <AnimatedStandingHoratio scale={2.5} />
-      <Button className="text-lg w-[300px] h-[45px] rounded-full bg-donatio-green">
-        Donate with Card <CreditCard size={20} className="ml-4" />
-      </Button>
+      <Link href="/donate/payment">
+        <Button className="text-lg w-[300px] h-[45px] rounded-full bg-donatio-green">
+          Donate with Card <CreditCard size={20} className="ml-4" />
+        </Button>
+      </Link>
       <Link href="/donate/donuts">
         <Button className="text-lg w-[300px] h-[45px] rounded-full bg-donatio-black">
           Donate with Donuts{" "}
