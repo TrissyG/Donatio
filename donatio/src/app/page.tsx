@@ -49,7 +49,7 @@ export default function Home() {
 
   return (
     <main className="flex-1">
-      <div className="flex justify-center items-center gap-16">
+      <div className="flex justify-center items-center gap-16 border-b-[1px] border-opacity-20 border-black pb-6">
         <PillButton
           className={`px-6 py-2 drop-shadow-lg ${
             isForYouSelected
@@ -71,12 +71,12 @@ export default function Home() {
           Explore
         </PillButton>
       </div>
-      <div className="pt-8 max-h-[625px] overflow-y-auto no-scrollbar">
+      <div className=" max-h-[650px] overflow-y-auto no-scrollbar">
         {isForYouSelected
           ? forYouArray.map((post, index) => <Card key={index} {...post} />)
           : exploreArray.map((post, index) => <Card key={index} {...post} />)}
       </div>
-      <div>
+      {/* <div>
         {users?.map((user, index) => (
           <div key={index}>
             <p>Causes:</p>
@@ -90,7 +90,7 @@ export default function Home() {
             <p>Donut Given: {user.donut_given}</p>
           </div>
         ))}
-      </div>
+      </div> */}
     </main>
   );
 }
