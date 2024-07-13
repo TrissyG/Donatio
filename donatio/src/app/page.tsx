@@ -30,7 +30,10 @@ export default function Home() {
       setTimeout(() => {
         setMessages((prevMessages) => [
           ...prevMessages,
-          { text: "This is a response from Horatio AI!", sender: "horatio" },
+          {
+            text: `Horatio recommends The Nature Conservancy!`,
+            sender: "horatio",
+          },
         ]);
       }, 1000);
     }
