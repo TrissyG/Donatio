@@ -1,0 +1,81 @@
+svg #top-body, #details {
+  animation: 2s upDown infinite;
+}
+
+@keyframes upDown {
+  0%, 100% {
+    transform: translateY(0%);
+  }
+  50% {
+    transform: translateY(2%);
+  }
+}
+
+svg #right-ear {
+  animation: 2s rotateCW infinite;
+  transform-origin: 20% 0%;
+}
+
+@keyframes rotateCW {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+}
+
+svg #left-ear {
+  animation: 2s rotateACW infinite;
+  transform-origin: 80% 0%;
+}
+
+@keyframes rotateACW {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-2deg);
+  }
+}
+
+svg #eyebrows {
+  animation: 2s eyebrowsY infinite;
+}
+
+@keyframes eyebrowsY {
+  0%, 100% {
+    transform: translateY(0%);
+  }
+  50% {
+    transform: translateY(1%);
+  }
+}
+
+svg #right-arm {
+  animation: 2s rotateRA infinite;
+  transform-origin: 60% 40%;
+}
+
+@keyframes rotateRA {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-5deg);
+  }
+}
+
+svg #left-arm {
+  animation: 2s rotateLA infinite;
+  transform-origin: 40% 40%;
+}
+
+@keyframes rotateLA {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+}

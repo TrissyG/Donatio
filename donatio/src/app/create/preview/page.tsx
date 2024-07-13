@@ -40,7 +40,6 @@ export default function Page() {
       setLoading(true);
       await createPost(newPost, decodeURIComponent(imageUrl));
       setLoading(false);
-
       router.push("http://localhost:3000/");
     } catch (error) {
       console.log(error);

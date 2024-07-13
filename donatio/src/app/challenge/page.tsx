@@ -241,21 +241,32 @@ export default function Page() {
                             <CheckCircle size={24} />
                           </Button>
                         </DialogTrigger>
-                        <DialogContent>
+                        <DialogContent className="bg-donatio-cream">
                           <DialogHeader>
-                            <DialogTitle className="text-center">
+                            <DialogTitle className="text-center text-xl">
                               Donuts Earned!
                             </DialogTitle>
                             <DialogDescription>
                               <div className="flex flex-col gap-4">
-                                <div className="h-[300px] shadow-md grid place-items-center">
-                                  Mascot
+                                <div className="h-[300px]  grid place-items-center">
+                                  <Image
+                                    src="/mascot2.svg"
+                                    alt="mascot-delivery"
+                                    width={220}
+                                    height={220}
+                                    className="drop-shadow-xl"
+                                  />
                                 </div>
                                 <p>
                                   You have earned{" "}
                                   <strong>{challenge.donut}</strong> donuts.
                                 </p>
-                                <Button onClick={close}>Close</Button>
+                                <Button
+                                  onClick={close}
+                                  className="bg-donatio-green"
+                                >
+                                  Close
+                                </Button>
                               </div>
                             </DialogDescription>
                           </DialogHeader>
