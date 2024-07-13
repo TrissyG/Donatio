@@ -4,18 +4,33 @@ import { Button } from "@/components/ui/button";
 import { Expand } from "lucide-react";
 import { redirect } from "next/navigation";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Canvas from "../_components/Canvas";
+import generateImage from "@/gateway/stabilityai-api";
 
 interface createPageProps {}
 
-export default function page() {
+export default function Page() {
   const [loading, setLoading] = useState(false);
+  const [canvasImage, setCanvasImage] = useState<File>();
+  const [prompt, setPrompt] = useState<string>("");
+  const canvasRef = useRef(null);
 
   const router = useRouter();
+  const handlePromptChange = (event: any) => {
+    setPrompt(event.target.value);
+  };
+
+  const getCanvasImage = () => {
+    if (canvasRef.current) {
+      return canvasRef.current.toDataURL("image/png");
+    }
+    return null;
+  };
 
   const onGenerate = () => {
     setLoading(true);
+    generateImage(canvasImage, prompt);
 
     try {
       setTimeout(() => {
@@ -45,7 +60,7 @@ export default function page() {
             id="canvas"
             className="mx-8 h-[300px] shadow-md place-items-center rounded-lg mb-6 relative"
           >
-            <Canvas />
+            <Canvas ref={canvasRef} />
             <Expand
               className="absolute top-4 right-4 cursor-pointer transition-all duration-250 hover:text-donatio-green"
               size={20}
@@ -57,6 +72,8 @@ export default function page() {
             </label>
             <textarea
               className="w-[350px] p-4 rounded-lg shadow-md border-2 border-donatio-green"
+              onChange={handlePromptChange}
+              value={prompt}
               rows={4}
             ></textarea>
           </form>

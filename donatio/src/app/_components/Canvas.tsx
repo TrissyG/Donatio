@@ -1,10 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { MutableRefObject, useEffect, useRef, useState } from "react";
 
 type CanvasProps = {
   width?: number;
   height?: number;
   color?: string;
   background?: string;
+  ref?: MutableRefObject<HTMLCanvasElement | null>;
 };
 
 const Canvas: React.FC<CanvasProps> = ({
@@ -12,6 +13,7 @@ const Canvas: React.FC<CanvasProps> = ({
   height = 300,
   color = "#000",
   background = "#fff",
+  ref,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isDrawing, setIsDrawing] = useState(false);
