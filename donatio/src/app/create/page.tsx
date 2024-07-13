@@ -11,7 +11,6 @@ import Image from "next/image";
 
 export default function Page() {
   const [loading, setLoading] = useState(false);
-  // const [canvasImage, setCanvasImage] = useState<Blob | null>(null);
   const [prompt, setPrompt] = useState<string>("");
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const router = useRouter();
@@ -22,33 +21,23 @@ export default function Page() {
     setPrompt(event.target.value);
   };
 
-  // const getCanvasImage = () => {
-  //   if (canvasRef.current) {
-  //     canvasRef.current.toBlob((blob) => {
-  //       if (blob) {
-  //         setCanvasImage(blob);
-  //       }
-  //     });
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   getCanvasImage();
-  // }, []);
-
   const onGenerate = async () => {
-    setLoading(true);
-    // canvasRef.current?.toBlob(async (blob) => {
-    //   if (blob) {
-    //     const generatedImage = await generateImage(blob, prompt);
-    //     const imageUrl = await postImage(generatedImage);
-    //   }
-    // });
+    canvasRef.current?.toBlob(async (blob) => {
+      if (blob) {
+        try {
+          const generatedImage = await generateImage(blob, prompt);
+          const imageUrl = await postImage(generatedImage);
 
-    setTimeout(() => {
-      setLoading(false);
-      router.push("http://localhost:3000/create/preview");
-    }, 3000);
+          setLoading(false);
+          router.push(
+            `/create/preview/?imageUrl=${encodeURIComponent(imageUrl)}`
+          );
+        } catch (error) {
+          console.error("Error generating or uploading image:", error);
+          setLoading(false);
+        }
+      }
+    });
   };
 
   return (

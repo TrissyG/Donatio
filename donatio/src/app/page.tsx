@@ -8,6 +8,7 @@ import { AnimatedStandingHoratio } from "./_components/animation/standingHoratio
 import Typewriter from "typewriter-effect";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { AnimatedStandingHoratio } from "./_components/animation/standingHoratio/AnimatedStandingHoratio";
 
 export default function Home() {
   const [isForYouSelected, setIsForYouSelected] = useState(true);
@@ -125,13 +126,16 @@ export default function Home() {
         {isForYouSelected ? (
           forYouArray.map((post, index) => <Card key={index} {...post} />)
         ) : (
-          <div className="px-6 mt-2">
+          <div className="px-4 mt-2">
             <h1 className="text-2xl font-semibold mb-3 text-center">
               Horatio AI
             </h1>
-            <div className="flex gap-6">
-              <AnimatedStandingHoratio scale={0} />
-              <div className="w-[700px] bg-white h-[300px] shadow-lg rounded-xl relative">
+            <div className="flex gap-3">
+              <div className="">
+                <AnimatedStandingHoratio scale={0.7} />
+              </div>
+
+              <div className="w-[700px] bg-white h-[300px] shadow-lg rounded-xl relative text-[12px]">
                 <div className="absolute bottom-2 right-[5px]">
                   <div className="mb-14">
                     <div
@@ -203,8 +207,8 @@ export default function Home() {
             <div
               key={index}
               className={`${
-                cause == "All" ? "px-6 bg-donatio-green bg-opacity-40" : "px-3"
-              } py-2 rounded-full border-2 border-opacity-70 border-donatio-green text-nowrap`}
+                cause == "All" ? "px-6  bg-opacity-40" : "px-3 bg-opacity-0"
+              } py-2 cursor-pointer transition-all duration-300 hover:bg-opacity-20 bg-donatio-green rounded-full border-2 border-opacity-70 border-donatio-green text-nowrap`}
             >
               {cause}
             </div>
