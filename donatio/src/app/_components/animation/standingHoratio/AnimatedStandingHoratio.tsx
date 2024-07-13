@@ -1,8 +1,16 @@
 import "./AnimatedStandingHoratioStyles.css";
 
-export const AnimatedStandingHoratio = () => {
+interface AnimatedChefHoratioProps {
+    scale: number;
+}
+
+export const AnimatedStandingHoratio = ({scale = 1} : AnimatedChefHoratioProps) => {
+
+    const svgWidth = 93 * scale;
+    const svgHeight = 92 * scale;
+
   return (
-    <svg width="93" height="92" viewBox="0 0 93 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width={svgWidth} height={svgHeight} viewBox="0 0 93 92" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g id="standing-dodo-1">
             <path id="left-leg" d="M42.2543 88.5129L41.9037 81.5C35.737 78 23.8487 72.3765 25.9037 77C27.6079 80.8345 28.586 83.2168 29.4567 85.3843C29.7461 86.1045 29.769 86.9041 29.5235 87.6404L29.3081 88.2864C29.0548 89.0465 29.1904 89.8825 29.6711 90.5234C30.1322 91.1382 30.8558 91.5 31.6243 91.5L39.4128 91.5C41.0399 91.5 42.3356 90.1379 42.2543 88.5129Z" fill="#F5C870" stroke="#735A44"/>
             <path id="right-leg" d="M50.5528 88.2604L50.9034 81.2475C57.0701 77.7475 68.9584 72.124 66.9035 76.7475C65.1993 80.582 64.2211 82.9643 63.3504 85.1318C63.0611 85.852 63.0382 86.6516 63.2836 87.3879L63.499 88.0339C63.7524 88.794 63.6167 89.63 63.136 90.2709C62.6749 90.8857 61.9513 91.2475 61.1828 91.2475L53.3943 91.2475C51.7672 91.2475 50.4716 89.8854 50.5528 88.2604Z" fill="#F5C870" stroke="#735A44"/>

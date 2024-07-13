@@ -6,6 +6,8 @@ import { Message, User } from "@/types/types";
 import { getUsers } from "@/gateway/Users/getUsers";
 import { AnimatedStandingHoratio } from "./_components/animation/AnimatedStandingHoratio";
 import Typewriter from "typewriter-effect";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   const [isForYouSelected, setIsForYouSelected] = useState(true);
@@ -63,7 +65,34 @@ export default function Home() {
     post,
   ];
 
-  const causeTabs = ["Climate Change", "Poverty", "Poor Education"];
+  const causeTabs = ["All", "Climate Change", "Poverty", "Poor Education"];
+
+  const causes = [
+    {
+      name: "Ukraine Crisis Relief",
+      description:
+        "The ongoing conflict in Ukraine has led to a humanitarian crisis, with millions of people displaced and in need of food, shelter, and medical assistance",
+      imgSrc: "/ukraine.png",
+    },
+    {
+      name: "COVID-19 Pandemic Response",
+      description:
+        "Efforts to provide vaccines, medical supplies, and support to communities affected by the pandemic, especially in developing countries.",
+      imgSrc: "/covid.png",
+    },
+    {
+      name: "Wildfire Relief in Canada",
+      description:
+        "Severe wildfires have devastated large areas, displacing residents and destroying homes and habitats.",
+      imgSrc: "/wildfire.png",
+    },
+    {
+      name: "Hunger Crisis in the Horn of Africa",
+      description:
+        "Prolonged drought and conflict have led to severe food shortages in countries like Somalia, Ethiopia, and Kenya.",
+      imgSrc: "/hunger.png",
+    },
+  ];
 
   return (
     <main className="flex-1">
@@ -166,10 +195,43 @@ export default function Home() {
           </div>
         )}
 
-        <div>
+        <div className="flex gap-4 items-center pl-4 overflow-x-hidden mt-6">
           {causeTabs.map((cause, index) => (
-            <div key={index} className="flex gap-2 items-center">
-              <p>{cause}</p>
+            <div
+              key={index}
+              className={`${
+                cause == "All" ? "px-6 bg-donatio-green bg-opacity-40" : "px-3"
+              } py-2 rounded-full border-2 border-opacity-70 border-donatio-green text-nowrap`}
+            >
+              {cause}
+            </div>
+          ))}
+        </div>
+
+        <div className="flex flex-col overflow-y-auto gap-4 mt-6 px-4 mb-4 no-scrollbar">
+          {causes.map((cause, index) => (
+            <div
+              key={index}
+              className="w-full h-[155px] py-3 px-4 rounded-2xl bg-white shadow-lg flex gap-4 relative"
+            >
+              <div>
+                <Image
+                  src="/piermanuele-sberni-m9dyZivCp2A-unsplash.jpg"
+                  alt={cause.imgSrc}
+                  width={85}
+                  height={100}
+                  className="rounded-lg shrink-0 w-[325px] h-[130px] object-cover"
+                  objectFit="cover"
+                  objectPosition="center"
+                />
+              </div>
+              <div>
+                <h2 className="font-semibold">{cause.name}</h2>
+                <p className="text-[12px]">{cause.description}</p>
+                <button className="text-[12px] px-3 py-1 absolute bottom-2 right-2 text-donatio-green font-semibold">
+                  Read More
+                </button>
+              </div>
             </div>
           ))}
         </div>
