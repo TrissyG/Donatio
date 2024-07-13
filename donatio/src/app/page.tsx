@@ -23,7 +23,8 @@ export default function Home() {
       setUsers(users);
     };
     getUser();
-  });
+    console.log("called getUsers in home page!");
+  }, []);
 
   const post = {
     imgSrc: "/piermanuele-sberni-m9dyZivCp2A-unsplash.jpg",
@@ -80,8 +81,8 @@ export default function Home() {
         {users?.map((user, index) => (
           <div key={index}>
             <p>Causes:</p>
-            <ul>
-              {user.causes.map((cause, causeIndex) => (
+            <ul>/
+              {user.causes?.map((cause, causeIndex) => (
                 <li key={causeIndex}>{cause}</li>
               ))}
             </ul>

@@ -6,6 +6,7 @@ export async function getChallenges() {
   try {
     const challengesCollection = collection(db, "challenges");
     const challengesSnapshot = await getDocs(challengesCollection);
+    console.log("called getChallenges!");
     const challengesList = challengesSnapshot.docs.map((doc) => doc.data());
     return challengesList as Challenge[];
   } catch (error) {
