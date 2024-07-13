@@ -9,13 +9,19 @@ export default function Navbar() {
     {
       name: "explore",
       url: "/",
-      imageUrl: "/search.svg",
+      imageUrl: "/explore.svg",
       selected: true,
     },
     {
       name: "challenge",
       url: "/challenge",
       imageUrl: "/challenge.svg",
+      selected: false,
+    },
+    {
+      name: "causes",
+      url: "/charity",
+      imageUrl: "/charity.svg",
       selected: false,
     },
     {
@@ -38,7 +44,7 @@ export default function Navbar() {
 
   return (
     <div className="w-[340px] h-[65px] bg-donatio-black ml-[30px] rounded-full absolute bottom-[15px]">
-      <ul className="flex flex-row gap-12 items-center justify-around px-3 mt-[8px]">
+      <ul className="flex flex-row gap-6 items-center justify-around px-3 mt-[8px]">
         {icons.map((icon, index) => (
           <Link
             href={icon.url}
