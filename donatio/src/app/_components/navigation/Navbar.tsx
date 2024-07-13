@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import SelectedIcon from "./SelectedIcon";
+import SelectedIcon from "../SelectedIcon";
 import Link from "next/link";
 
 export default function Navbar() {
