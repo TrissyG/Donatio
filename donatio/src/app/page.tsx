@@ -1,9 +1,13 @@
 "use client";
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import PillButton from "./_components/ui/PillButton";
 import Card from "./_components/posts/Card";
-import { User } from "@/types/types";
-import { getUsers } from "@/gateway/Users/getUsers";
+import {User} from "@/types/types";
+import {getUsers} from "@/gateway/Users/getUsers";
+import {AnimatedStandingHoratio} from "@/app/_components/animation/standingHoratio/AnimatedStandingHoratio";
+import {AnimatedChefHoratio} from "@/app/_components/animation/chefHoratio/AnimatedChefHoratio";
+import {AnimatedDonutHoratio} from "@/app/_components/animation/donutHoratio/AnimatedDonutHoratio";
+import {AnimatedArtistHoratio} from "@/app/_components/animation/artistHoratio/AnimatedArtistHoratio";
 
 export default function Home() {
   const [isForYouSelected, setIsForYouSelected] = useState(true);
@@ -75,6 +79,10 @@ export default function Home() {
         {isForYouSelected
           ? forYouArray.map((post, index) => <Card key={index} {...post} />)
           : exploreArray.map((post, index) => <Card key={index} {...post} />)}
+        <AnimatedStandingHoratio scale={2}/>
+        <AnimatedChefHoratio scale={2}/>
+        <AnimatedDonutHoratio scale={2}/>
+        <AnimatedArtistHoratio scale={2}/>
       </div>
       {/* <div>
         {users?.map((user, index) => (

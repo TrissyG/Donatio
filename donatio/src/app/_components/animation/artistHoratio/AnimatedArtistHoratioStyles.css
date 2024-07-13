@@ -1,0 +1,98 @@
+svg #top-body, #details {
+  animation: 2s upDown infinite;
+}
+
+@keyframes upDown {
+  0%, 100% {
+    transform: translateY(0%);
+  }
+  50% {
+    transform: translateY(2%);
+  }
+}
+
+svg #right-eyebrow {
+  animation: 2s upDown infinite;
+}
+svg #left-eyebrow {
+  animation: 2s downUp infinite;
+}
+
+@keyframes downUp {
+  0%, 100% {
+    transform: translateY(0%);
+  }
+  50% {
+    transform: translateY(-2%);
+  }
+}
+
+svg #right-ear1 {
+  animation: 2s rotateRightEar1 infinite;
+  transform-origin: 85% 10%;
+}
+
+@keyframes rotateRightEar1 {
+  0%, 100% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+}
+
+svg #left-ear1 {
+  animation: 2s rotateLeftEar1 infinite;
+  transform-origin: 60% 10%;
+}
+
+@keyframes rotateLeftEar1 {
+  0%, 100% {
+    transform: rotateZ(0deg);
+  }
+  50% {
+    transform: rotateZ(10deg);
+  }
+}
+
+svg #eyebrows {
+  animation: 2s eyebrowsY infinite;
+}
+
+@keyframes eyebrowsY {
+  0%, 100% {
+    transform: translateY(0%);
+  }
+  50% {
+    transform: translateY(-1%);
+  }
+}
+
+svg #brush-arm {
+  animation: 2s animatebrushArm infinite;
+  transform-origin: 60% 55%;
+}
+
+@keyframes animatebrushArm {
+  0%, 100% {
+    transform: rotateZ(0deg);
+  }
+  50% {
+    transform: rotateZ(20deg);
+  }
+}
+
+svg #artist-right-leg {
+  animation: 2s animateRightLeg infinite;
+  transform-origin: 80% 70%;
+}
+
+@keyframes animateRightLeg {
+  0%, 100% {
+    transform: rotateZ(-20deg);
+  }
+  50% {
+    transform: rotateZ(0deg);
+  }
+}
+
