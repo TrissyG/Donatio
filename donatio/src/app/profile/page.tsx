@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import Card from "../_components/posts/Card";
 
-export default function page() {
+export default function Page() {
   const post = {
     imgSrc: "/piermanuele-sberni-m9dyZivCp2A-unsplash.jpg",
     caption: "Lorem ipsum Lorem ipsum Lorem ipsum",
