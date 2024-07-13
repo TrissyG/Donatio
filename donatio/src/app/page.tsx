@@ -104,10 +104,10 @@ export default function Home() {
   return (
     <main className="flex-1">
       {pageLoad && (
-        <div className="flex justify-center items-center gap-8 flex-col mt-24">
+        <div className="flex justify-center items-center gap-8 flex-col mt-60">
           <AnimatedStandingHoratio scale={2.5} />
           <p className="text-2xl font-semibold flex gap-2">
-            Hotario is loading the <br />
+            Horatio is loading the <br />
             page... <Loader2 className="w-6 h-6 animate-spin" />
           </p>
         </div>
