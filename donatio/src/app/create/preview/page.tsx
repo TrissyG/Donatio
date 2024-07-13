@@ -67,11 +67,12 @@ export default function Page() {
           name="causes"
           placeholder="Worthy cause"
           onChange={handleInputChange}
+          className="px-4 py-2 rounded-lg shadow-md border-2 border-donatio-green border-opacity-50"
         />
         <label className="text-lg font-semibold">Write a description</label>
         <textarea
           name="description"
-          className="rounded-lg shadow-md border-2 border-donatio-green border-opacity-50"
+          className="rounded-lg shadow-md border-2 border-donatio-green border-opacity-50 px-4 py-2"
           rows={4}
           placeholder="Why should people care about this cause?"
           onChange={handleInputChange}
