@@ -5,7 +5,7 @@ import Image from "next/image";
 import { ChevronLeft, CreditCard } from "lucide-react";
 import Link from "next/link";
 
-export default function page() {
+export default function Page() {
   return (
     <div className="flex justify-center items-center mt-12 flex-col gap-10">
       <AnimatedStandingHoratio scale={2.5} />

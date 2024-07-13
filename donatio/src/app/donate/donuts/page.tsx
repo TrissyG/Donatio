@@ -21,7 +21,7 @@ const packages = [
   },
 ];
 
-export default function page() {
+export default function Page() {
   return (
     <div className="flex justify-center flex-col items-center">
       <div className="flex justify-center items-center gap-2 rounded-full border-donatio-green border-opacity-60 border-2 px-4 py-2 bg-donatio-green bg-opacity-20">
