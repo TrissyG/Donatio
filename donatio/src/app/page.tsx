@@ -4,6 +4,7 @@ import PillButton from "./_components/ui/PillButton";
 import Card from "./_components/posts/Card";
 import { Message, User } from "@/types/types";
 import { getUsers } from "@/gateway/Users/getUsers";
+import { AnimatedStandingHoratio } from "./_components/animation/standingHoratio/AnimatedStandingHoratio";
 import Typewriter from "typewriter-effect";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
