@@ -45,7 +45,7 @@ export default function Home() {
 
         setTimeout(() => {
           setShowButton(true);
-        }, 2000);
+        }, 7000);
       }, 1000);
     }
   };
@@ -91,13 +91,13 @@ export default function Home() {
       name: "Wildfire Relief in Canada",
       description:
         "Severe wildfires have devastated large areas, displacing residents and destroying homes and habitats.",
-      imgSrc: "/wildfire.png",
+      imgSrc: "/wildfire.jpeg",
     },
     {
       name: "Hunger Crisis in the Horn of Africa",
       description:
         "Prolonged drought and conflict have led to severe food shortages in countries like Somalia, Ethiopia, and Kenya.",
-      imgSrc: "/hunger.png",
+      imgSrc: "/hunger.jpg",
     },
   ];
 
@@ -258,7 +258,7 @@ export default function Home() {
               >
                 <div>
                   <Image
-                    src="/piermanuele-sberni-m9dyZivCp2A-unsplash.jpg"
+                    src={cause.imgSrc}
                     alt={cause.imgSrc}
                     width={85}
                     height={100}
