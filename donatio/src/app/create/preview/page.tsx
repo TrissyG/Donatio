@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import React from "react";
 
-export default function page() {
+export default function Page() {
   return (
     <div>
       <div className="flex justify-center mt-8">
