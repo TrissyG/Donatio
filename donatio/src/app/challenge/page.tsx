@@ -1,9 +1,21 @@
 "use client";
 import { getChallenges } from "@/gateway/Challenges/getChallenges";
-import { Challenge } from "@/types/types";
+import { getUsers } from "@/gateway/Users/getUsers";
+import { addDonuts } from "@/gateway/Users/putUsers";
+import { Challenge, User } from "@/types/types";
 import { CheckCircle } from "lucide-react";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 
 const dates = [
   {
@@ -58,39 +70,27 @@ const dates = [
   },
 ];
 
-// const challenges = [
-//   {
-//     id: 1,
-//     name: "Challenge 1",
-//     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-//     icon: "/challenge.svg",
-//     donuts: 50,
-//   },
-
-//   {
-//     id: 2,
-//     name: "Challenge 2",
-//     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-//     icon: "/challenge.svg",
-//     donuts: 50,
-//   },
-
-//   {
-//     id: 3,
-//     name: "Challenge 3",
-//     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-//     icon: "/challenge.svg",
-//     donuts: 50,
-//   },
-// ];
-
-export default function Page() {
+export default function page() {
   const [challenges, setChallenges] = useState<Challenge[] | void>([]);
+  const [user, setUser] = useState<User[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const onClaim = async (a: number, b: number, c: number) => {
+    try {
+      setLoading(true);
+      await addDonuts("1", a, b, c);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     const getChallenge = async () => {
       try {
         const data = await getChallenges();
+        const userData = await getUsers();
+        setUser(userData!);
         setChallenges(data);
       } catch (error) {
         console.log(error);
@@ -181,9 +181,37 @@ export default function Page() {
                   <p>{challenge.donut}</p>
                 </div>
                 {challenge.isCompleted ? (
-                  <div className="px-2 py-1 border-2 border-donatio-green bg-donatio-green flex-shrink-0 w-[50px] rounded-full flex justify-center">
-                    <CheckCircle size={24} />
-                  </div>
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button className="px-2 py-1 border-2 border-donatio-green bg-donatio-green flex-shrink-0 w-[50px] rounded-full flex justify-center cursor-pointer transition-all duration-300 hover:opacity-70">
+                        <CheckCircle size={24} />
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent>
+                      <DialogHeader>
+                        <DialogTitle>Are you absolutely sure?</DialogTitle>
+                        <DialogDescription>
+                          <>
+                            <p>
+                              You have earned <strong>{challenge.donut}</strong>{" "}
+                              donuts. Are you sure you want to claim them?
+                            </p>
+                            <Button
+                              onClick={() =>
+                                onClaim(
+                                  challenge.donut,
+                                  user[0].donuts,
+                                  user[0].donuts_earned
+                                )
+                              }
+                            >
+                              Close
+                            </Button>
+                          </>
+                        </DialogDescription>
+                      </DialogHeader>
+                    </DialogContent>
+                  </Dialog>
                 ) : (
                   <div className="px-2 py-1 border-2 border-donatio-green flex-shrink-0 w-[50px] rounded-full">
                     <p className="text-sm font-bold">0 / 1</p>
