@@ -17,14 +17,6 @@ export default function Home() {
     setIsForYouSelected(false);
   };
 
-  useEffect(() => {
-    const getUser = async () => {
-      const users = await getUsers();
-      setUsers(users);
-    };
-    getUser();
-  });
-
   const post = {
     imgSrc: "/piermanuele-sberni-m9dyZivCp2A-unsplash.jpg",
     caption: "Lorem ipsum Lorem ipsum Lorem ipsum",
