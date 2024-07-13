@@ -5,7 +5,7 @@ export default async function generateImage(image: Blob, prompt: string) {
     image: image,
     prompt: prompt,
     output_format: "jpeg",
-    strength: 0.1,
+    strength: 0.75,
     mode: "image-to-image",
   };
 
@@ -16,14 +16,20 @@ export default async function generateImage(image: Blob, prompt: string) {
       validateStatus: undefined,
       responseType: "arraybuffer",
       headers: {
-        Authorization: `Bearer ${process.env.API_KEY}`,
+        Authorization: `Bearer sk-CtFeh9xDCNMqQH1B3zwHMAvMZFO1VJKTffaqVQE2wuOrxpBW`,
         Accept: "image/*",
       },
     }
   );
 
   if (response.status === 200) {
-    return Buffer.from(response.data);
+    try {
+      const buffer = Buffer.from(response.data);
+      return new Blob([buffer], { type: "image/jpeg" });
+    } catch (error) {
+      console.error(error);
+      throw new Error("Failed to generate image");
+    }
   } else {
     throw new Error(`${response.status}: ${response.data.toString()}`);
   }

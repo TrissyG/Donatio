@@ -3,13 +3,14 @@
 import { Button } from "@/components/ui/button";
 import { Expand } from "lucide-react";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import Canvas from "../_components/Canvas";
-import generateImage from "@/gateway/stabilityai-api";
+import generateImage from "@/gateway/Images/generateImage";
+import { postImage } from "@/gateway/Images/postImage";
 
 export default function Page() {
   const [loading, setLoading] = useState(false);
-  const [canvasImage, setCanvasImage] = useState<Blob | null>(null);
+  // const [canvasImage, setCanvasImage] = useState<Blob | null>(null);
   const [prompt, setPrompt] = useState<string>("");
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const router = useRouter();
@@ -20,32 +21,29 @@ export default function Page() {
     setPrompt(event.target.value);
   };
 
-  const getCanvasImage = () => {
-    if (canvasRef.current) {
-      canvasRef.current.toBlob((blob) => {
-        if (blob) {
-          setCanvasImage(blob);
-        }
-      });
-    }
-  };
+  // const getCanvasImage = () => {
+  //   if (canvasRef.current) {
+  //     canvasRef.current.toBlob((blob) => {
+  //       if (blob) {
+  //         setCanvasImage(blob);
+  //       }
+  //     });
+  //   }
+  // };
 
-  useEffect(() => {
-    getCanvasImage();
-  }, []);
+  // useEffect(() => {
+  //   getCanvasImage();
+  // }, []);
 
   const onGenerate = async () => {
-    getCanvasImage();
     setLoading(true);
-    console.log(canvasImage);
-
-    if (canvasImage) {
-      const formData = new FormData();
-      formData.append("image", canvasImage);
-      formData.append("prompt", prompt);
-
-      await generateImage(formData);
-    }
+    canvasRef.current?.toBlob(async (blob) => {
+      if (blob) {
+        const generatedImage = await generateImage(blob, prompt);
+        const imageUrl = await postImage(generatedImage);
+        console.log(imageUrl);
+      }
+    });
 
     setTimeout(() => {
       setLoading(false);
@@ -53,53 +51,53 @@ export default function Page() {
     }, 3000);
   };
 
-   return (
-     <div>
-       {loading ? (
-         <div>
-           <div className="mx-8 bg-white grid place-items-center mt-12 shadow-md rounded-lg h-[400px]">
-             Mascot
-           </div>
-           <p className="mx-8 mt-4 text-lg ">Generating your Post...</p>
-         </div>
-       ) : (
-         <div>
-           <h2 className="text-xl font-bold text-center mb-6 mt-2 text-donatio-green">
-             Generate a Post
-           </h2>
-           <h3 className="text-lg mx-8 font-bold mt-2 mb-4">Draw anything</h3>
+  return (
+    <div>
+      {loading ? (
+        <div>
+          <div className="mx-8 bg-white grid place-items-center mt-12 shadow-md rounded-lg h-[400px]">
+            Mascot
+          </div>
+          <p className="mx-8 mt-4 text-lg ">Generating your Post...</p>
+        </div>
+      ) : (
+        <div>
+          <h2 className="text-xl font-bold text-center mb-6 mt-2 text-donatio-green">
+            Generate a Post
+          </h2>
+          <h3 className="text-lg mx-8 font-bold mt-2 mb-4">Draw anything</h3>
 
-           <div
-             id="canvas"
-             className="mx-8 h-[300px] shadow-md place-items-center rounded-lg mb-6 relative"
-           >
-             <Canvas ref={canvasRef} />
-             <Expand
-               className="absolute top-4 right-4 cursor-pointer transition-all duration-250 hover:text-donatio-green"
-               size={20}
-             />
-           </div>
-           <form className="flex justify-center flex-col items-center">
-             <label className="font-semibold text-lg mb-4 text-left">
-               Input your prompt
-             </label>
-             <textarea
-               className="w-[350px] p-4 rounded-lg shadow-md border-2 border-donatio-green"
-               onChange={handlePromptChange}
-               value={prompt}
-               rows={4}
-             ></textarea>
-           </form>
-           <div className="px-8 mt-6">
-             <Button
-               className="bg-donatio-green px-[140px] rounded-full text-[17px] font-semibold"
-               onClick={onGenerate}
-             >
-               Generate
-             </Button>
-           </div>
-         </div>
-       )}
-     </div>
-   );
+          <div
+            id="canvas"
+            className="mx-8 h-[300px] shadow-md place-items-center rounded-lg mb-6 relative"
+          >
+            <Canvas ref={canvasRef} />
+            <Expand
+              className="absolute top-4 right-4 cursor-pointer transition-all duration-250 hover:text-donatio-green"
+              size={20}
+            />
+          </div>
+          <form className="flex justify-center flex-col items-center">
+            <label className="font-semibold text-lg mb-4 text-left">
+              Input your prompt
+            </label>
+            <textarea
+              className="w-[350px] p-4 rounded-lg shadow-md border-2 border-donatio-green"
+              onChange={handlePromptChange}
+              value={prompt}
+              rows={4}
+            ></textarea>
+          </form>
+          <div className="px-8 mt-6">
+            <Button
+              className="bg-donatio-green px-[140px] rounded-full text-[17px] font-semibold"
+              onClick={onGenerate}
+            >
+              Generate
+            </Button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
 }
