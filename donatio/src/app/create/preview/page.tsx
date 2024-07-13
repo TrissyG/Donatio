@@ -3,12 +3,20 @@ import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 
 import { createPost } from "@/gateway/Posts/postPosts";
 import { Post } from "@/types/types";
 
-export default function Page() {
+export default function PageWithSuspense() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Page />
+    </Suspense>
+  );
+}
+
+function Page() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const imageUrl = searchParams.get("imageUrl");
