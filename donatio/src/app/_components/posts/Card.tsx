@@ -30,8 +30,10 @@ const Card = ({ post }: CardProps) => {
 
  return (
    <div className="relative mx-4 flex items-center justify-center">
-     <img
+     <Image
        src={post.image}
+       width={350}
+       height={300}
        alt={post.description}
        className="rounded-lg m-4 w-full h-full"
      />
@@ -55,7 +57,13 @@ const Card = ({ post }: CardProps) => {
        <div
          className={`flex gap-4 ${isExpanded ? "items-start" : "items-center"}`}
        >
-         <img src={post.user_image} alt="" className="max-w-10" />
+         <Image
+           src={post.user_image}
+           alt=""
+           width={350}
+           height={300}
+           className="max-w-10 rounded-full"
+         />
          <p className="cursor-pointer" onClick={handleCaptionClick}>
            {isExpanded ? post.description : truncateCaption(post.description)}
          </p>
