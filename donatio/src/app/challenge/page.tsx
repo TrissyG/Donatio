@@ -70,7 +70,7 @@ const dates = [
   },
 ];
 
-export default function page() {
+export default function Page() {
   const [challenges, setChallenges] = useState<Challenge[] | void>([]);
   const [user, setUser] = useState<User[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
