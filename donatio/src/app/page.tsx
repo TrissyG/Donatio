@@ -49,24 +49,40 @@ export default function Home() {
   }, []);
 
   const post = {
+    imgSrc: "/mohammad-minhaz-uDG2-d4oUn8-unsplash.jpg",
+    theme: "Climate change",
+    caption:
+      "drip drip rain drip weee treeees treeeestreeees treeeestreeeestreeees",
+    likes: 123,
+    avatarSrc: "/avatar.png",
+  };
+  const post2 = {
     imgSrc: "/piermanuele-sberni-m9dyZivCp2A-unsplash.jpg",
-    caption: "Lorem ipsum Lorem ipsum Lorem ipsum",
-    username: "regular_donor24",
-    timePosted: "27",
-    likes: 26.4,
+    caption: "swoosh goes the volcano swoosh weee lava lava hot floor is lava",
+    theme: "Volcanoes",
+    likes: 23454,
+    avatarSrc: "/mascot1.svg",
   };
 
   const forYouArray = [
     post,
+    post2,
     post,
+    post2,
     post,
+    post2,
     post,
+    post2,
     post,
-    post,
-    post,
-    post,
-    post,
-    post,
+    post2,
+    // post,
+    // post,
+    // post,
+    // post,
+    // post,
+    // post,
+    // post,
+    // post,
   ];
 
   const causeTabs = ["All", "Climate Change", "Poverty", "Poor Education"];
