@@ -38,7 +38,7 @@ export default function Home() {
     caption: "swoosh goes the volcano swoosh weee lava lava hot floor is lava",
     theme: "Volcanoes",
     likes: 23454,
-    avatarSrc: "/author.png",
+    avatarSrc: "/mascot1.svg",
   };
 
   const forYouArray = [
