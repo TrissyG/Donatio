@@ -31,7 +31,7 @@ export default function page() {
   const onclose = async () => {
     setLoading(true);
 
-    await addDonuts("1", -990, 16300, 32000);
+    await addDonuts("1", -990, 1120, 16200);
 
     router.push("/");
     setLoading(false);

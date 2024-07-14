@@ -18,7 +18,7 @@ export default async function generateImage(image: Blob, prompt: string) {
       validateStatus: undefined,
       responseType: "arraybuffer",
       headers: {
-        Authorization: `Bearer sk-KgsmsMZS81ECU95N58A85ZkZrvrY0n1EmhIjii7SrnDaqFew`,
+        Authorization: `Bearer sk-VfHXg5bMW8kQYLZ6bEKIUaBJr2KMT4E2n0DxYlyv0egqDN6e`,
         Accept: "image/*",
       },
     }
