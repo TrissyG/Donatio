@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss";
+import type {Config} from "tailwindcss";
 
 const config = {
   darkMode: ["class"],
@@ -28,6 +28,7 @@ const config = {
         "donatio-green": "#50A45A",
         "donatio-red": "#EA4141",
         "donatio-black": "#232323",
+        "donatio-blue": "#26325E",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
