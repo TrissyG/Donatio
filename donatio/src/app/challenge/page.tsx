@@ -1,11 +1,11 @@
 "use client";
-import {getChallenges} from "@/gateway/Challenges/getChallenges";
-import {getUsers} from "@/gateway/Users/getUsers";
-import {addDonuts} from "@/gateway/Users/putUsers";
-import {Challenge, User} from "@/types/types";
-import {CheckCircle} from "lucide-react";
+import { getChallenges } from "@/gateway/Challenges/getChallenges";
+import { getUsers } from "@/gateway/Users/getUsers";
+import { addDonuts } from "@/gateway/Users/putUsers";
+import { Challenge, User } from "@/types/types";
+import { CheckCircle } from "lucide-react";
 import Image from "next/image";
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 
 import {
   Dialog,
@@ -15,59 +15,60 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import {Button} from "@/components/ui/button";
-import {AnimatedChefHoratio} from "@/app/_components/animation/chefHoratio/AnimatedChefHoratio";
-import {AnimatedDonutHoratio} from "@/app/_components/animation/donutHoratio/AnimatedDonutHoratio";
+import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
+import { AnimatedDonutHoratio } from "@/app/_components/animation/donutHoratio/AnimatedDonutHoratio";
+import { AnimatedChefHoratio } from "@/app/_components/animation/chefHoratio/AnimatedChefHoratio";
 
 const dates = [
   {
-    day: "TU",
-    date: "11",
-    streak: "no",
-  },
-  {
     day: "WE",
-    date: "12",
-    streak: "yes",
+    date: "10",
+    streak: "no",
   },
   {
     day: "TH",
-    date: "13",
-    streak: "no",
-  },
-  {
-    day: "FR",
-    date: "14",
+    date: "11",
     streak: "yes",
   },
   {
+    day: "FR",
+    date: "12",
+    streak: "no",
+  },
+  {
     day: "SA",
-    date: "15",
+    date: "13",
     streak: "yes",
   },
   {
     day: "SU",
-    date: "16",
-    streak: "no",
-  },
-  {
-    day: "MO",
-    date: "17",
+    date: "14",
     streak: "today",
   },
   {
-    day: "TU",
-    date: "18",
+    day: "MO",
+    date: "15",
     streak: "no",
   },
   {
+    day: "TU",
+    date: "16",
+    streak: "yes",
+  },
+  {
     day: "WE",
-    date: "19",
+    date: "17",
     streak: "no",
   },
   {
     day: "TH",
-    date: "20",
+    date: "18",
+    streak: "no",
+  },
+  {
+    day: "FR",
+    date: "19",
     streak: "no",
   },
 ];
@@ -77,6 +78,8 @@ export default function Page() {
   const [user, setUser] = useState<User[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [dailiesCompleted, setDailiesCompleted] = useState<number>(0);
+
+  const router = useRouter();
 
   const onClaim = async (a: number, b: number, c: number) => {
     try {
@@ -107,7 +110,7 @@ export default function Page() {
   return (
     <div>
       <h1 className="text-2xl px-4">
-        Hey, <strong>Naren!</strong>
+        Hey, <strong>Naren !</strong>
       </h1>
       <div className="flex justify-center items-center gap-[6px]">
         {dates.map((date) => {
@@ -169,8 +172,9 @@ export default function Page() {
             </p>
           </div>
         </div>
-        <div className='pt-3'>
-          <AnimatedChefHoratio scale={2.5}/>
+
+        <div className="pt-4">
+          <AnimatedChefHoratio scale={2.5} />
         </div>
       </div>
 
@@ -230,7 +234,7 @@ export default function Page() {
                               onClaim(
                                 challenge.donut,
                                 user[0].donuts,
-                                user[0].donuts_earned
+                                user[0].donuts_earned,
                               )
                             }
                             className="px-2 py-1 border-2 border-donatio-green bg-donatio-green flex-shrink-0 w-[50px] rounded-full flex justify-center cursor-pointer transition-all duration-300 hover:opacity-70"
@@ -245,19 +249,22 @@ export default function Page() {
                             </DialogTitle>
                             <DialogDescription>
                               <div className="flex flex-col gap-4">
-                                <div className="h-[300px]  grid place-items-center">
-                                  <AnimatedDonutHoratio scale={2.5}/>
+                                <div className="h-[300px] pt-[50px] grid place-items-center">
+                                  <AnimatedDonutHoratio scale={2.5} />
                                 </div>
                                 <p>
                                   You have earned{" "}
                                   <strong>{challenge.donut}</strong> donuts.
                                 </p>
-                                <Button
-                                  onClick={close}
-                                  className="bg-donatio-green"
-                                >
-                                  Close
-                                </Button>
+                                <form>
+                                  <Button
+                                    onClick={() => router.push("/challenge")}
+                                    className="bg-donatio-green"
+                                    type="submit"
+                                  >
+                                    Close
+                                  </Button>
+                                </form>
                               </div>
                             </DialogDescription>
                           </DialogHeader>
