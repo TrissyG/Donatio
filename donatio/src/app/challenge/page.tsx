@@ -20,53 +20,53 @@ import { useRouter } from "next/navigation";
 
 const dates = [
   {
-    day: "TU",
-    date: "11",
-    streak: "no",
-  },
-  {
     day: "WE",
-    date: "12",
-    streak: "yes",
+    date: "10",
+    streak: "no",
   },
   {
     day: "TH",
-    date: "13",
-    streak: "no",
-  },
-  {
-    day: "FR",
-    date: "14",
+    date: "11",
     streak: "yes",
   },
   {
+    day: "FR",
+    date: "12",
+    streak: "no",
+  },
+  {
     day: "SA",
-    date: "15",
+    date: "13",
     streak: "yes",
   },
   {
     day: "SU",
-    date: "16",
-    streak: "no",
-  },
-  {
-    day: "MO",
-    date: "17",
+    date: "14",
     streak: "today",
   },
   {
-    day: "TU",
-    date: "18",
+    day: "MO",
+    date: "15",
     streak: "no",
   },
   {
+    day: "TU",
+    date: "16",
+    streak: "yes",
+  },
+  {
     day: "WE",
-    date: "19",
+    date: "17",
     streak: "no",
   },
   {
     day: "TH",
-    date: "20",
+    date: "18",
+    streak: "no",
+  },
+  {
+    day: "FR",
+    date: "19",
     streak: "no",
   },
 ];
