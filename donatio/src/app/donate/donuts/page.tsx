@@ -24,7 +24,8 @@ const packages = [
   },
 ];
 
-export default function page() {
+
+export default function Page() {
   const router = useRouter();
   return (
     <div className="flex justify-center flex-col items-center">

@@ -5,6 +5,7 @@ import React from "react";
 import { AnimatedArtistHoratio } from "@/app/_components/animation/artistHoratio/AnimatedArtistHoratio";
 import Image from "next/image";
 
+
 export default function page() {
   return (
     <div className="px-6 overflow-y-auto no-scrollbar max-h-[700px]">
@@ -52,7 +53,7 @@ export default function page() {
       </div>
 
       <div className="flex justify-between items-center ">
-        <Link href="/explore">
+        <Link href="/">
           <Button className="rounded-full">
             <ChevronLeft className="mr-2 h-4 w-4" />
             Back

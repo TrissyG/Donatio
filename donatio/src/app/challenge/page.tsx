@@ -17,6 +17,8 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import { AnimatedDonutHoratio } from "@/app/_components/animation/donutHoratio/AnimatedDonutHoratio";
+import { AnimatedChefHoratio } from "@/app/_components/animation/chefHoratio/AnimatedChefHoratio";
 
 const dates = [
   {
@@ -155,7 +157,7 @@ export default function Page() {
       <div className="my-4 mx-6 rounded-2xl h-[300px] flex gap-4 justify-end">
         <div className="pt-24 flex flex-col gap-4">
           <div className="font-semibold">
-            Complete you daily challenges with dodo to get donuts.
+            Complete your daily challenges with Horatio to get donuts.
           </div>
           <div className="relative w-[125px] border-donatio-green border-2 rounded-full h-10 grid place-items-center shadow-md">
             <div className="absolute rounded-full left-0 top-0 bg-donatio-green bg-opacity-20 h-10 w-full" />
@@ -171,13 +173,9 @@ export default function Page() {
           </div>
         </div>
 
-        <Image
-          src="/mascot3.svg"
-          alt="mascot-standing"
-          width={200}
-          height={300}
-          className="drop-shadow-xl"
-        />
+        <div className="pt-4">
+          <AnimatedChefHoratio scale={2.5} />
+        </div>
       </div>
 
       <div className="flex flex-col gap-2">
@@ -236,7 +234,7 @@ export default function Page() {
                               onClaim(
                                 challenge.donut,
                                 user[0].donuts,
-                                user[0].donuts_earned
+                                user[0].donuts_earned,
                               )
                             }
                             className="px-2 py-1 border-2 border-donatio-green bg-donatio-green flex-shrink-0 w-[50px] rounded-full flex justify-center cursor-pointer transition-all duration-300 hover:opacity-70"
@@ -251,14 +249,8 @@ export default function Page() {
                             </DialogTitle>
                             <DialogDescription>
                               <div className="flex flex-col gap-4">
-                                <div className="h-[300px]  grid place-items-center">
-                                  <Image
-                                    src="/mascot2.svg"
-                                    alt="mascot-delivery"
-                                    width={220}
-                                    height={220}
-                                    className="drop-shadow-xl"
-                                  />
+                                <div className="h-[300px] pt-[50px] grid place-items-center">
+                                  <AnimatedDonutHoratio scale={2.5} />
                                 </div>
                                 <p>
                                   You have earned{" "}
