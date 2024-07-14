@@ -11,7 +11,7 @@ import Image from "next/image";
 import { AnimatedArtistHoratio } from "../_components/animation/artistHoratio/AnimatedArtistHoratio";
 
 export default function Page() {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [prompt, setPrompt] = useState<string>("");
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const router = useRouter();
@@ -50,7 +50,8 @@ export default function Page() {
           </div>
           <div className="text-xl font-semibold">
             <p className="mx-8 mt-4 text-lg flex items-center gap-4">
-              Generating your Post <Loader2 className="animate-spin w-6 h-6" />
+              Horatio is generating your post...{" "}
+              <Loader2 className="animate-spin w-6 h-6" />
             </p>
           </div>
         </div>
