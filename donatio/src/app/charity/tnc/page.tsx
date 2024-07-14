@@ -1,14 +1,21 @@
-import {Button} from "@/components/ui/button";
-import {ChevronLeft, ChevronRight} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import React from "react";
-import {AnimatedArtistHoratio} from "@/app/_components/animation/artistHoratio/AnimatedArtistHoratio";
+import { AnimatedArtistHoratio } from "@/app/_components/animation/artistHoratio/AnimatedArtistHoratio";
+import Image from "next/image";
 
 export default function page() {
   return (
     <div className="px-6 overflow-y-auto no-scrollbar max-h-[700px]">
-      <div className='pl-10'>
-        <AnimatedArtistHoratio scale={2}/>
+      <div className="rounded-lg  my-4 bg-white shadow-lg">
+        <Image
+          src="/nature.jpg"
+          alt="logo"
+          width={380}
+          height={150}
+          className="rounded-lg p-2"
+        />
       </div>
       <div>
         <h1 className="text-2xl font-semibold mt-4 mb-2">

@@ -1,6 +1,9 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const packages = [
@@ -22,6 +25,7 @@ const packages = [
 ];
 
 export default function page() {
+  const router = useRouter();
   return (
     <div className="flex justify-center flex-col items-center">
       <div className="flex justify-center items-center gap-2 rounded-full border-donatio-green border-opacity-60 border-2 px-4 py-2 bg-donatio-green bg-opacity-20">
@@ -48,7 +52,10 @@ export default function page() {
             <p className="text-xl font-semibold">{pkg.value}</p>
             <p className="text-xl font-semibold">{pkg.name}</p>
 
-            <Button className="mt-12 bg-donatio-green rounded-full px-8">
+            <Button
+              className="mt-12 bg-donatio-green rounded-full px-8"
+              onClick={() => router.push("/donate/donuts/confirm")}
+            >
               Select <ChevronRight className="w-4 h-4 ml-2" />
             </Button>
           </div>
