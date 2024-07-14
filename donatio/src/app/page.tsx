@@ -144,16 +144,16 @@ export default function Home() {
               <h1 className="text-2xl font-semibold mb-3 text-center">
                 Horatio AI
               </h1>
-              <div className="flex gap-3">
-                <div className="">
-                  <AnimatedStandingHoratio scale={0.7} />
+              <div className="flex-col gap-3">
+                <div className="w-full h-[100px] overflow-clip grid place-items-center">
+                  <AnimatedStandingHoratio scale={2.7} />
                 </div>
 
-                <div className="w-[700px] bg-white h-[300px] shadow-lg rounded-xl relative text-[12px]">
-                  <div className="absolute bottom-2 right-[5px]">
+                <div className="w-full bg-white h-[225px] shadow-lg rounded-xl relative text-[12px] overflow-clip">
+                  <div className="w-full absolute bottom-2">
                     <div className="mb-14">
                       <div
-                        className={`p-2 m-2 rounded-lg bg-gray-300 text-black`}
+                        className={`w-fit p-2 m-2 rounded-lg bg-gray-300 text-black`}
                       >
                         <Typewriter
                           onInit={(typewriter) => {
@@ -193,7 +193,7 @@ export default function Home() {
                       {showButton ? (
                         <>
                           <Link href="/charity/tnc" className=" ">
-                            <p className="ml-[200px] my-2 w-[80px] rounded-md p-2 text-center bg-[#d1d5db] transition-all duration-300 hover:bg-donatio-green">
+                            <p className="ml-[10px] my-2 w-[80px] rounded-md p-2 text-center bg-[#d1d5db] transition-all duration-300 hover:bg-donatio-green">
                               View page
                             </p>
                           </Link>
@@ -202,9 +202,9 @@ export default function Home() {
                         <></>
                       )}
                     </div>
-                    <div className="absolute bottom-2 right-[0px] flex items-center">
+                    <div className="absolute bottom-2 left-[10px] flex items-center">
                       <input
-                        className="w-[200px] h-[40px] border-2 border-donatio-green rounded-full px-4"
+                        className="w-[280px] h-[40px] border-2 border-donatio-green rounded-full px-4"
                         type="text"
                         placeholder="Type a message..."
                         value={inputValue}
