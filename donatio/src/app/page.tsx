@@ -102,12 +102,13 @@ export default function Home() {
   return (
     <main className="flex-1">
       {pageLoad && (
-        <div className="flex justify-center items-center gap-8 flex-col mt-60">
+        <div className="flex justify-center items-center gap-8 flex-col mt-40">
           <AnimatedStandingHoratio scale={2.5} />
-          <p className="text-2xl font-semibold flex gap-2">
+          <p className="text-2xl font-semibold flex gap-2 text-center text-donatio-blue">
             Horatio is loading the <br />
-            page... <Loader2 className="w-6 h-6 animate-spin" />
+            page...
           </p>
+          <Loader2 className="w-20 h-20 animate-spin text-donatio-green"/>
         </div>
       )}
       <div className={`${pageLoad && "hidden"}`}>
