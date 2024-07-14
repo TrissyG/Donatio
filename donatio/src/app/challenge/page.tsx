@@ -109,8 +109,8 @@ export default function Page() {
 
   return (
     <div>
-      <h1 className="text-2xl px-4">
-        Hey, <strong>Naren !</strong>
+      <h1 className="text-2xl px-4 mb-2">
+        Hey, <strong>horatio_fan224!</strong>
       </h1>
       <div className="flex justify-center items-center gap-[6px]">
         {dates.map((date) => {
@@ -234,7 +234,7 @@ export default function Page() {
                               onClaim(
                                 challenge.donut,
                                 user[0].donuts,
-                                user[0].donuts_earned,
+                                user[0].donuts_earned
                               )
                             }
                             className="px-2 py-1 border-2 border-donatio-green bg-donatio-green flex-shrink-0 w-[50px] rounded-full flex justify-center cursor-pointer transition-all duration-300 hover:opacity-70"
