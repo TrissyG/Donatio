@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { ChevronRight, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import Image from "next/image";
 import React, { useState } from "react";
 import {
@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/dialog";
 import { AnimatedChefHoratio } from "@/app/_components/animation/chefHoratio/AnimatedChefHoratio";
 import { useRouter } from "next/navigation";
+import { addDonuts } from "@/gateway/Users/putUsers";
 
 const packages = [
   {
@@ -27,13 +28,13 @@ export default function page() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
-  const onclose = () => {
+  const onclose = async () => {
     setLoading(true);
 
-    setTimeout(() => {
-      router.push("/");
-      setLoading(false);
-    }, 1500);
+    await addDonuts("1", -990, 1120, 16200);
+
+    router.push("/");
+    setLoading(false);
   };
 
   return (

@@ -193,7 +193,7 @@ export default function Home() {
                         <>
                           <Link href="/charity/tnc" className=" ">
                             <p className="ml-[200px] my-2 w-[80px] rounded-md p-2 text-center bg-[#d1d5db] transition-all duration-300 hover:bg-donatio-green">
-                              View more
+                              View page
                             </p>
                           </Link>
                         </>
