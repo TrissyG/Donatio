@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/dialog";
 import {Button} from "@/components/ui/button";
 import {AnimatedChefHoratio} from "@/app/_components/animation/chefHoratio/AnimatedChefHoratio";
+import {AnimatedDonutHoratio} from "@/app/_components/animation/donutHoratio/AnimatedDonutHoratio";
 
 const dates = [
   {
@@ -245,13 +246,7 @@ export default function Page() {
                             <DialogDescription>
                               <div className="flex flex-col gap-4">
                                 <div className="h-[300px]  grid place-items-center">
-                                  <Image
-                                    src="/mascot2.svg"
-                                    alt="mascot-delivery"
-                                    width={220}
-                                    height={220}
-                                    className="drop-shadow-xl"
-                                  />
+                                  <AnimatedDonutHoratio scale={2.5}/>
                                 </div>
                                 <p>
                                   You have earned{" "}
