@@ -1,12 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import {Button} from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import {useEffect, useState} from "react";
-import {getUsers} from "@/gateway/Users/getUsers";
-import {User} from "@/types/types";
-import {PlusSquare} from "lucide-react";
+import { useEffect, useState } from "react";
+import { getUsers } from "@/gateway/Users/getUsers";
+import { User } from "@/types/types";
+import { PlusSquare } from "lucide-react";
 
 interface StatusBarProps {}
 
