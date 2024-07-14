@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import { AnimatedDonutHoratio } from "@/app/_components/animation/donutHoratio/AnimatedDonutHoratio";
 
 const dates = [
   {
@@ -236,7 +237,7 @@ export default function Page() {
                               onClaim(
                                 challenge.donut,
                                 user[0].donuts,
-                                user[0].donuts_earned
+                                user[0].donuts_earned,
                               )
                             }
                             className="px-2 py-1 border-2 border-donatio-green bg-donatio-green flex-shrink-0 w-[50px] rounded-full flex justify-center cursor-pointer transition-all duration-300 hover:opacity-70"
@@ -251,14 +252,8 @@ export default function Page() {
                             </DialogTitle>
                             <DialogDescription>
                               <div className="flex flex-col gap-4">
-                                <div className="h-[300px]  grid place-items-center">
-                                  <Image
-                                    src="/mascot2.svg"
-                                    alt="mascot-delivery"
-                                    width={220}
-                                    height={220}
-                                    className="drop-shadow-xl"
-                                  />
+                                <div className="h-[300px] pt-[50px] grid place-items-center">
+                                  <AnimatedDonutHoratio scale={2.5} />
                                 </div>
                                 <p>
                                   You have earned{" "}
