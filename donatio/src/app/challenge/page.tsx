@@ -226,7 +226,7 @@ export default function Page() {
                       />
                       <p className="text-[14px] font-bold">{challenge.donut}</p>
                     </div>
-                    {true ? (
+                    {challenge.isCompleted ? (
                       <Dialog>
                         <DialogTrigger asChild>
                           <Button
