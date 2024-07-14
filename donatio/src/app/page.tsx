@@ -1,17 +1,15 @@
 "use client";
-
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import PillButton from "./_components/ui/PillButton";
 import Card from "./_components/posts/Card";
-import { Message, User } from "@/types/types";
-import { getUsers } from "@/gateway/Users/getUsers";
-import { AnimatedStandingHoratio } from "./_components/animation/standingHoratio/AnimatedStandingHoratio";
+import {Message, Post, User} from "@/types/types";
+import {getUsers} from "@/gateway/Users/getUsers";
+import {AnimatedStandingHoratio} from "./_components/animation/standingHoratio/AnimatedStandingHoratio";
 import Typewriter from "typewriter-effect";
 import Image from "next/image";
-import { Post } from "@/types/types";
-import { getPosts } from "@/gateway/Posts/getPosts";
 import Link from "next/link";
-import { Loader2 } from "lucide-react";
+import {getPosts} from "@/gateway/Posts/getPosts";
+import {Loader2} from "lucide-react";
 
 export default function Home() {
   const [isForYouSelected, setIsForYouSelected] = useState(true);
@@ -135,7 +133,7 @@ export default function Home() {
             Explore
           </PillButton>
         </div>
-        <div className="max-h-[650px] overflow-y-auto no-scrollbar">
+        <div className="max-h-[730px] overflow-y-auto no-scrollbar pt-2 pb-[80px]">
           {isForYouSelected ? (
             posts.map((post, index) => (
               <Card post={post} key={index} {...post} />
