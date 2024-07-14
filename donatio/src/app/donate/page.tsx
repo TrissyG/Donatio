@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 export default function Page() {
   const router = useRouter();
   return (
-    <div className="flex justify-center items-center mt-12 flex-col gap-10">
+    <div className="flex justify-center items-center mt-48 flex-col gap-10">
       <AnimatedStandingHoratio scale={2.5} />
       <Link href="/donate/payment">
         <Button className="text-lg w-[300px] h-[45px] rounded-full bg-donatio-green">

@@ -1,14 +1,14 @@
-import {Button} from "@/components/ui/button";
-import {ChevronLeft, ChevronRight} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import React from "react";
-import {AnimatedArtistHoratio} from "@/app/_components/animation/artistHoratio/AnimatedArtistHoratio";
+import { AnimatedArtistHoratio } from "@/app/_components/animation/artistHoratio/AnimatedArtistHoratio";
 
 export default function page() {
   return (
     <div className="px-6 overflow-y-auto no-scrollbar max-h-[700px]">
-      <div className='pl-10'>
-        <AnimatedArtistHoratio scale={2}/>
+      <div className="pl-10">
+        <AnimatedArtistHoratio scale={2} />
       </div>
       <div>
         <h1 className="text-2xl font-semibold mt-4 mb-2">
@@ -45,7 +45,7 @@ export default function page() {
       </div>
 
       <div className="flex justify-between items-center ">
-        <Link href="/explore">
+        <Link href="/">
           <Button className="rounded-full">
             <ChevronLeft className="mr-2 h-4 w-4" />
             Back
