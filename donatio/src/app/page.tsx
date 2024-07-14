@@ -1,15 +1,15 @@
 "use client";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import PillButton from "./_components/ui/PillButton";
 import Card from "./_components/posts/Card";
-import {Message, Post, User} from "@/types/types";
-import {getUsers} from "@/gateway/Users/getUsers";
-import {AnimatedStandingHoratio} from "./_components/animation/standingHoratio/AnimatedStandingHoratio";
+import { Message, Post, User } from "@/types/types";
+import { getUsers } from "@/gateway/Users/getUsers";
+import { AnimatedStandingHoratio } from "./_components/animation/standingHoratio/AnimatedStandingHoratio";
 import Typewriter from "typewriter-effect";
 import Image from "next/image";
 import Link from "next/link";
-import {getPosts} from "@/gateway/Posts/getPosts";
-import {Loader2} from "lucide-react";
+import { getPosts } from "@/gateway/Posts/getPosts";
+import { Loader2 } from "lucide-react";
 
 export default function Home() {
   const [isForYouSelected, setIsForYouSelected] = useState(true);
@@ -67,7 +67,7 @@ export default function Home() {
   useEffect(() => {
     setTimeout(() => {
       setPageLoad(false);
-    }, 3000);
+    }, 2000);
   }, []);
 
   const causeTabs = ["All", "Climate Change", "Poverty", "Poor Education"];
