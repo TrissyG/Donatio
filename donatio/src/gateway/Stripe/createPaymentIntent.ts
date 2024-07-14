@@ -20,9 +20,8 @@ export default async function handler(req: { body: { items: any; }; }, res: { se
       enabled: true,
     },
   });
-
+  console.log(paymentIntent);
   res.send({
     clientSecret: paymentIntent.client_secret,
   });
-
 };

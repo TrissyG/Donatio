@@ -4,6 +4,7 @@ import {
   useStripe,
   useElements
 } from "@stripe/react-stripe-js";
+import { Layout } from '@stripe/stripe-js';
 
 
 interface CustomError extends Error {
@@ -49,7 +50,7 @@ export default function CheckoutForm() {
     });
   }, [stripe]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
 
     if (!stripe || !elements) {
@@ -83,9 +84,8 @@ export default function CheckoutForm() {
   };
 
   const paymentElementOptions = {
-    layout: "tabs",
+    layout: "accordion" as Layout, // Cast to Layout if "accordion" is a valid value
   };
-
   return (
     <form id="payment-form" onSubmit={handleSubmit}>
 
