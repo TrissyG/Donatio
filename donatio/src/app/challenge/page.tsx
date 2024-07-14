@@ -1,11 +1,11 @@
 "use client";
-import { getChallenges } from "@/gateway/Challenges/getChallenges";
-import { getUsers } from "@/gateway/Users/getUsers";
-import { addDonuts } from "@/gateway/Users/putUsers";
-import { Challenge, User } from "@/types/types";
-import { CheckCircle } from "lucide-react";
+import {getChallenges} from "@/gateway/Challenges/getChallenges";
+import {getUsers} from "@/gateway/Users/getUsers";
+import {addDonuts} from "@/gateway/Users/putUsers";
+import {Challenge, User} from "@/types/types";
+import {CheckCircle} from "lucide-react";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 
 import {
   Dialog,
@@ -15,7 +15,9 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
+import {Button} from "@/components/ui/button";
+import {AnimatedChefHoratio} from "@/app/_components/animation/chefHoratio/AnimatedChefHoratio";
+import {AnimatedDonutHoratio} from "@/app/_components/animation/donutHoratio/AnimatedDonutHoratio";
 
 const dates = [
   {
@@ -105,7 +107,7 @@ export default function Page() {
   return (
     <div>
       <h1 className="text-2xl px-4">
-        Hey, <strong>Naren !</strong>
+        Hey, <strong>Naren!</strong>
       </h1>
       <div className="flex justify-center items-center gap-[6px]">
         {dates.map((date) => {
@@ -152,7 +154,7 @@ export default function Page() {
       <div className="my-4 mx-6 rounded-2xl h-[300px] flex gap-4 justify-end">
         <div className="pt-24 flex flex-col gap-4">
           <div className="font-semibold">
-            Complete you daily challenges with dodo to get donuts.
+            Complete your daily challenges with Horatio to get donuts.
           </div>
           <div className="relative w-[125px] border-donatio-green border-2 rounded-full h-10 grid place-items-center shadow-md">
             <div className="absolute rounded-full left-0 top-0 bg-donatio-green bg-opacity-20 h-10 w-full" />
@@ -167,14 +169,9 @@ export default function Page() {
             </p>
           </div>
         </div>
-
-        <Image
-          src="/mascot3.svg"
-          alt="mascot-standing"
-          width={200}
-          height={300}
-          className="drop-shadow-xl"
-        />
+        <div className='pt-3'>
+          <AnimatedChefHoratio scale={2.5}/>
+        </div>
       </div>
 
       <div className="flex flex-col gap-2">
@@ -249,13 +246,7 @@ export default function Page() {
                             <DialogDescription>
                               <div className="flex flex-col gap-4">
                                 <div className="h-[300px]  grid place-items-center">
-                                  <Image
-                                    src="/mascot2.svg"
-                                    alt="mascot-delivery"
-                                    width={220}
-                                    height={220}
-                                    className="drop-shadow-xl"
-                                  />
+                                  <AnimatedDonutHoratio scale={2.5}/>
                                 </div>
                                 <p>
                                   You have earned{" "}

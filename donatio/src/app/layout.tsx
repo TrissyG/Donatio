@@ -1,9 +1,11 @@
-import type { Metadata } from "next";
-import { Fredoka, Inter } from "next/font/google";
+import type {Metadata} from "next";
 import "./globals.css";
 import Navbar from "./_components/navigation/Navbar";
 import StatusBar from "./_components/navigation/StatusBar";
+import {Fredoka} from "next/font/google";
+
 const fredoka = Fredoka({ subsets: ["latin"] });
+
 
 export const metadata: Metadata = {
   title: "Donatio",

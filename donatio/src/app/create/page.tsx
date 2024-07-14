@@ -59,7 +59,9 @@ export default function Page() {
           <h2 className="text-2xl font-bold text-center mb-6 mt-2 text-donatio-green">
             Generate a Post
           </h2>
-          <h3 className="text-lg mx-8 font-bold mt-2 mb-4">Draw anything</h3>
+          <h3 className="text-lg mx-8 font-bold mt-2 mb-4">
+            Sketch your graphic
+          </h3>
 
           <div
             id="canvas"

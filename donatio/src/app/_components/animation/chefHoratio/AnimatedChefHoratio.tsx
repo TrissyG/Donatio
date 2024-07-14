@@ -5,7 +5,7 @@ interface AnimatedChefHoratioProps {
 }
 
 export const AnimatedChefHoratio = ({scale = 1} : AnimatedChefHoratioProps) => {
-    const svgWidth = 76 * scale;
+    const svgWidth = 80 * scale;
     const svgHeight = 103 * scale;
 
   return (
