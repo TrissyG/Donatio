@@ -1,11 +1,14 @@
+"use client";
 import React from "react";
 import { AnimatedStandingHoratio } from "../_components/animation/standingHoratio/AnimatedStandingHoratio";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { ChevronLeft, CreditCard } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function Page() {
+  const router = useRouter();
   return (
     <div className="flex justify-center items-center mt-12 flex-col gap-10">
       <AnimatedStandingHoratio scale={2.5} />
@@ -26,10 +29,11 @@ export default function Page() {
           />
         </Button>
       </Link>
-
-      <Button className="text-lg w-[170px] h-[45px] rounded-full bg-donatio-red mt-40 self-start ml-16">
-        <ChevronLeft size={20} className="mr-2" />{" "}
-        <p className="pr-4 ">Return</p>
+      <Button
+        className="absolute top-20 left-4"
+        onClick={() => router.push("charity/tnc")}
+      >
+        <ChevronLeft className="h-4" />
       </Button>
     </div>
   );
