@@ -18,7 +18,12 @@ dotenv.config();
       `.env: STRIPE_WEBHOOK_SECRET is required. Received: "${process.env.STRIPE_WEBHOOK_SECRET}"`
     );
   }
+  if (!process.env.STRIPE_WEBHOOK_SECRET) {
+    throw new Error(
+      `.env: STRIPE_PUBLIC_KEY is required. Received: "${process.env.STRIPE_PUBLIC_KEY}"`
+    );
+  }
 })();
 
-export const { ENVIRONMENT, STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET } =
+export const { ENVIRONMENT, STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET, STRIPE_PUBLIC_KEY } =
   process.env;
